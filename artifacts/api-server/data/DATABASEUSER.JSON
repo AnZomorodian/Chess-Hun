@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "user_1773507987531_gl7jmc5hn07",
+      "username": "testuser",
+      "email": "test@chess.com",
+      "displayName": "Test Player",
+      "passwordHash": "6d3217610ad3e9dad966cf33037001329eda5f8b72638b1d862ef7cda268d5f7",
+      "level": "Beginner",
+      "rating": 800,
+      "lessonsCompleted": 0,
+      "openingsStudied": 0,
+      "joinedAt": "2026-03-14T17:06:27.532Z"
+    },
+    {
+      "id": "user_1773508101948_ve6i81xtcb",
+      "username": "ArtinZomorodian",
+      "email": "artin.zomorodian@outlook.com",
+      "displayName": "Artin Zomorodian",
+      "passwordHash": "8e07e8c3e3e1cb62b1f9f7015ccca9eb9c33613dc46cc620481732fdee08458b",
+      "level": "Beginner",
+      "rating": 800,
+      "lessonsCompleted": 0,
+      "openingsStudied": 0,
+      "joinedAt": "2026-03-14T17:08:21.948Z"
+    }
+  ]
+}

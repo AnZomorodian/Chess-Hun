@@ -1,0 +1,19 @@
+packages:
+  "framer-motion": "For stunning cinematic animations, piece movements, and page transitions"
+  "chess.js": "For chess game logic, move validation, and FEN parsing"
+  "clsx": "Utility for constructing className strings conditionally"
+  "tailwind-merge": "Utility to safely merge Tailwind classes"
+  "lucide-react": "For beautiful UI icons"
+  "zustand": "For simple client-side state management (user session)"
+
+images:
+  - path: "artifacts/chess-academy/public/images/hero-bg.png"
+    description: "Cinematic, moody dark background featuring a close-up of a luxurious gold and obsidian chess knight with volumetric lighting and soft dust particles"
+    aspect_ratio: "16:9"
+  - path: "artifacts/chess-academy/public/images/logo-mark.png"
+    description: "Minimalist, elegant geometric royal crown logo mark in metallic gold on a completely transparent background"
+    aspect_ratio: "1:1"
+
+notes:
+  - "Authentication will use localStorage to store the JWT token and custom fetch hooks to inject the Authorization header."
+  - "The chess board will be a custom component for maximum visual control, utilizing click-to-move mechanics backed by chess.js."

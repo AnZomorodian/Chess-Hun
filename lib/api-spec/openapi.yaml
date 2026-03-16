@@ -1,0 +1,461 @@
+openapi: 3.1.0
+info:
+  title: Api
+  version: 0.1.0
+  description: Chess Academy API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: auth
+    description: Authentication operations
+  - name: openings
+    description: Chess openings
+  - name: lessons
+    description: Chess lessons
+  - name: progress
+    description: User progress
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /auth/register:
+    post:
+      operationId: register
+      tags: [auth]
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterRequest"
+      responses:
+        "201":
+          description: User registered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /auth/login:
+    post:
+      operationId: login
+      tags: [auth]
+      summary: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+      responses:
+        "200":
+          description: Logged in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /auth/me:
+    get:
+      operationId: getMe
+      tags: [auth]
+      summary: Get current user
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: Current user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /openings:
+    get:
+      operationId: getOpenings
+      tags: [openings]
+      summary: Get all chess openings
+      responses:
+        "200":
+          description: List of openings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Opening"
+
+  /openings/{id}:
+    get:
+      operationId: getOpening
+      tags: [openings]
+      summary: Get a specific opening
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Opening detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Opening"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /lessons:
+    get:
+      operationId: getLessons
+      tags: [lessons]
+      summary: Get all lessons
+      responses:
+        "200":
+          description: List of lessons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lesson"
+
+  /lessons/{id}:
+    get:
+      operationId: getLesson
+      tags: [lessons]
+      summary: Get a specific lesson
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Lesson detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lesson"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /progress:
+    get:
+      operationId: getProgress
+      tags: [progress]
+      summary: Get user progress
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: User progress
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProgress"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    post:
+      operationId: updateProgress
+      tags: [progress]
+      summary: Update user progress
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProgressRequest"
+      responses:
+        "200":
+          description: Progress updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProgress"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+    RegisterRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        displayName:
+          type: string
+      required:
+        - username
+        - email
+        - password
+
+    LoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password
+
+    AuthResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        user:
+          $ref: "#/components/schemas/UserProfile"
+      required:
+        - token
+        - user
+
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+        displayName:
+          type: string
+        level:
+          type: string
+        rating:
+          type: number
+        lessonsCompleted:
+          type: number
+        openingsStudied:
+          type: number
+        joinedAt:
+          type: string
+      required:
+        - id
+        - username
+        - email
+        - level
+        - rating
+        - lessonsCompleted
+        - openingsStudied
+        - joinedAt
+
+    Opening:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        eco:
+          type: string
+        description:
+          type: string
+        moves:
+          type: array
+          items:
+            type: string
+        category:
+          type: string
+        difficulty:
+          type: string
+        keyIdeas:
+          type: array
+          items:
+            type: string
+        popularity:
+          type: number
+      required:
+        - id
+        - name
+        - eco
+        - description
+        - moves
+        - category
+        - difficulty
+        - keyIdeas
+        - popularity
+
+    Lesson:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        difficulty:
+          type: string
+        duration:
+          type: number
+        content:
+          type: string
+        exercises:
+          type: array
+          items:
+            $ref: "#/components/schemas/Exercise"
+        order:
+          type: number
+      required:
+        - id
+        - title
+        - description
+        - category
+        - difficulty
+        - duration
+        - content
+        - exercises
+        - order
+
+    Exercise:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        question:
+          type: string
+        options:
+          type: array
+          items:
+            type: string
+        answer:
+          type: string
+        explanation:
+          type: string
+      required:
+        - id
+        - type
+        - question
+        - answer
+        - explanation
+
+    UserProgress:
+      type: object
+      properties:
+        userId:
+          type: string
+        completedLessons:
+          type: array
+          items:
+            type: string
+        completedOpenings:
+          type: array
+          items:
+            type: string
+        totalPoints:
+          type: number
+        streak:
+          type: number
+        lastActive:
+          type: string
+      required:
+        - userId
+        - completedLessons
+        - completedOpenings
+        - totalPoints
+        - streak
+        - lastActive
+
+    UpdateProgressRequest:
+      type: object
+      properties:
+        lessonId:
+          type: string
+        openingId:
+          type: string
+        pointsEarned:
+          type: number
+      required: []
