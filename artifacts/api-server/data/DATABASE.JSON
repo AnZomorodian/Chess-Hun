@@ -706,6 +706,204 @@
         "White aims to pressure d5 from the sides rather than meeting it head-on"
       ],
       "popularity": 61
+    },
+    {
+      "id": "alekhine-four-pawns",
+      "name": "Alekhine's Defense: Four Pawns Attack",
+      "eco": "B03",
+      "description": "The most aggressive and ambitious response to Alekhine's Defense. White builds a massive pawn center with e5-d4-c4-f4, aiming to crush Black's knight and dominate all of space. It's a high-risk, high-reward approach — the center becomes a weapon but also a target. Sharp, complex, and uncompromising.",
+      "moves": [
+        "e4",
+        "Nf6",
+        "e5",
+        "Nd5",
+        "d4",
+        "d6",
+        "c4",
+        "Nb6",
+        "f4"
+      ],
+      "category": "King's Pawn Opening",
+      "difficulty": "Advanced",
+      "keyIdeas": [
+        "Build a massive 4-pawn center: e5, d4, c4, f4 to dominate space",
+        "The knight is driven to the rim (b6) — 'a knight on the rim is dim'",
+        "Black's counterplay: ...dxe5, ...Nc6, undermining the center immediately",
+        "White's center looks powerful but is vulnerable to ...Bg4 and ...c5 breaks",
+        "The d5 pawn break is Black's most important freeing idea",
+        "Theoretical battles go very deep — preparation is essential for both sides"
+      ],
+      "popularity": 42
+    },
+    {
+      "id": "alekhine-modern",
+      "name": "Alekhine's Defense: Modern Variation",
+      "eco": "B04",
+      "description": "White's most popular and solid response to Alekhine's Defense. Instead of the aggressive Four Pawns Attack, White plays e5-d4-d3 (or Nf3 then d4), building a smaller but safer center. The Modern Variation leads to positional maneuvering where White tries to keep a space advantage while Black works to dissolve it.",
+      "moves": [
+        "e4",
+        "Nf6",
+        "e5",
+        "Nd5",
+        "Nf3",
+        "d6",
+        "d4",
+        "Bg4"
+      ],
+      "category": "King's Pawn Opening",
+      "difficulty": "Intermediate",
+      "keyIdeas": [
+        "e5-d4-Nf3: build a stable center without over-extending",
+        "Black pins the Nf3 with ...Bg4 — standard freeing idea",
+        "White should respond with Be2 or h3 to break the pin",
+        "Black's plan: ...dxe5, ...Nc6, ...e5 — dissolve the center",
+        "More positional than the Four Pawns — White keeps endgame advantage",
+        "Ideal for players who like strategic play with a slight edge"
+      ],
+      "popularity": 50
+    },
+    {
+      "id": "alekhine-exchange",
+      "name": "Alekhine's Defense: Exchange Variation",
+      "eco": "B03",
+      "description": "White immediately takes the knight on d5 after Black plays it there, simplifying the position early. The Exchange Variation leads to a fairly symmetrical structure where White has a slight space advantage with pawns on e4 and d4. It's the quietest response to Alekhine's Defense — solid but offers Black good drawing chances.",
+      "moves": [
+        "e4",
+        "Nf6",
+        "e5",
+        "Nd5",
+        "d4",
+        "d6",
+        "c4",
+        "Nb6",
+        "exd6"
+      ],
+      "category": "King's Pawn Opening",
+      "difficulty": "Beginner",
+      "keyIdeas": [
+        "Exchange on d6 immediately — simplified structure with slight White advantage",
+        "Black recaptures with ...cxd6 or ...exd6 — different pawn structures result",
+        "...cxd6: Black gets a half-open c-file and active play",
+        "...exd6: classical structure, easier development for Black",
+        "White aims for a long-term small edge — not spectacular but solid",
+        "Good choice for players who want to avoid heavy Alekhine theory"
+      ],
+      "popularity": 35
+    },
+    {
+      "id": "petrov-defense",
+      "name": "Petrov's Defense (Russian Game)",
+      "eco": "C42",
+      "description": "One of chess's most solid and reliable defenses. After 1.e4 e5 2.Nf3, Black counters with 2...Nf6, attacking White's e4 pawn immediately. The Petrov leads to very solid, often symmetrical positions where Black is happy to equalize and fight from a sound foundation. Kramnik used it throughout his entire career.",
+      "moves": [
+        "e4",
+        "e5",
+        "Nf3",
+        "Nf6"
+      ],
+      "category": "King's Pawn Opening",
+      "difficulty": "Intermediate",
+      "keyIdeas": [
+        "Counter-attack e4 immediately with ...Nf6 instead of defending e5",
+        "Classical Variation (3.Nxe5): White takes the pawn — leads to balanced play",
+        "After 3.Nxe5 d6 4.Nf3 Nxe4: Black regains the pawn with equality",
+        "Steinitz Variation (3.d4): most aggressive, leads to sharp middlegames",
+        "The 'Berlin Wall' endgame: solid, slightly passive but extremely hard to beat",
+        "Kramnik defeated Kasparov with the Petrov in their 2000 World Championship match"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": "kings-indian-attack",
+      "name": "King's Indian Attack",
+      "eco": "A07",
+      "description": "A reversed King's Indian Defense — White plays as Black would in the KID (Nf3, g3, Bg2, O-O, d3, Nbd2) regardless of Black's setup. Popularized by Bobby Fischer, the KIA is a complete system that avoids extensive opening theory. It leads to rich middlegames where White typically launches a kingside attack with e5 and f4.",
+      "moves": [
+        "Nf3",
+        "d5",
+        "g3",
+        "c5",
+        "Bg2",
+        "Nc6",
+        "O-O",
+        "e5"
+      ],
+      "category": "Flank Opening",
+      "difficulty": "Intermediate",
+      "keyIdeas": [
+        "System opening: play Nf3-g3-Bg2-O-O-d3-Nbd2 regardless of Black's moves",
+        "The Bg2 fianchetto puts long-term pressure on Black's queenside and center",
+        "Kingside attack plan: e5, Nf1-g3-h5, then f4 with attacking chances",
+        "Fischer used it successfully against the French and Sicilian setups",
+        "Black's best: ...d4 pawn push to claim space, then ...f5 counterplay",
+        "Excellent for players who want to learn one system against multiple defenses"
+      ],
+      "popularity": 58
+    },
+    {
+      "id": "nimzowitsch-defense",
+      "name": "Nimzowitsch Defense",
+      "eco": "B00",
+      "description": "An eccentric and provocative defense named after Aaron Nimzowitsch, the father of hypermodern chess theory. After 1.e4, Black plays 1...Nc6 — a move that develops a piece but doesn't contest the center directly. It leads to unusual positions full of creative potential, often with early ...d5 and ...e5 counterplay.",
+      "moves": [
+        "e4",
+        "Nc6"
+      ],
+      "category": "King's Pawn Opening",
+      "difficulty": "Advanced",
+      "keyIdeas": [
+        "Develop the knight immediately without committing pawns",
+        "Provoke White into playing d4 or d3 before deciding Black's setup",
+        "The Colorado Counter (2.Nf3 f5): extreme aggression — not recommended for beginners",
+        "Black often follows with ...d5 or ...e5 to fight for the center later",
+        "White's best: 2.d4 (control center) or 2.Nf3 (flexible)",
+        "Fits the hypermodern philosophy: observe White's center then attack it"
+      ],
+      "popularity": 28
+    },
+    {
+      "id": "bishops-opening",
+      "name": "Bishop's Opening",
+      "eco": "C24",
+      "description": "A classic and simple opening where White develops the bishop to c4 immediately on move 2. The Bishop's Opening avoids well-known theoretical main lines and leads to open, active positions. It's an excellent choice for beginners because pieces come out naturally and there's plenty of attacking potential targeting f7.",
+      "moves": [
+        "e4",
+        "e5",
+        "Bc4"
+      ],
+      "category": "King's Pawn Opening",
+      "difficulty": "Beginner",
+      "keyIdeas": [
+        "Develop the bishop early to attack f7, the weakest square near Black's king",
+        "Keep options open — you can transpose into the Italian Game (Nf3 + Nc3) or go for early f4",
+        "Control the center with the e4 pawn and bishop together",
+        "Look for quick attacking opportunities on the kingside",
+        "After 2...Nf6 3.d3 is solid; after 2...Nc6 3.Nf3 reaches Italian Game territory",
+        "Very forgiving opening — hard to go terribly wrong as White"
+      ],
+      "popularity": 42
+    },
+    {
+      "id": "center-game",
+      "name": "Center Game",
+      "eco": "C22",
+      "description": "One of the most straightforward approaches to the opening — White immediately stakes a claim in the center with 2.d4. If Black captures the pawn, White's queen recaptures and takes a central post. Though it leads to an early queen sortie, the Center Game is great for beginners who want to fight for the center immediately and learn open game principles.",
+      "moves": [
+        "e4",
+        "e5",
+        "d4"
+      ],
+      "category": "King's Pawn Opening",
+      "difficulty": "Beginner",
+      "keyIdeas": [
+        "Immediately challenge Black's central pawn on e5 with 2.d4",
+        "After 2...exd4 3.Qxd4 — White recaptures with the queen, gaining a central presence",
+        "The queen on d4 is active but can be chased with Nc6 — don't fear this, develop with Qe3",
+        "Control the center early with two pawns and trade off Black's e-pawn",
+        "Simple development: Bc4 or Bb5 after the queen retreats, then castle quickly",
+        "Excellent for beginners — immediate central action with easy-to-understand piece play"
+      ],
+      "popularity": 35
     }
   ],
   "progress": [
@@ -718,6 +916,16 @@
       "totalPoints": 80,
       "streak": 1,
       "lastActive": "2026-03-14T17:18:55.230Z"
+    },
+    {
+      "userId": "user_1773760962281_vvhg6w1bbb",
+      "completedLessons": [
+        "piece-values"
+      ],
+      "completedOpenings": [],
+      "totalPoints": 80,
+      "streak": 1,
+      "lastActive": "2026-03-17T18:37:41.507Z"
     }
   ]
 }

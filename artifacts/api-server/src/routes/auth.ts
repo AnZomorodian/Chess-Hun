@@ -4,6 +4,13 @@ import { hashPassword, generateToken, verifyToken, extractToken } from "../lib/a
 
 const router = Router();
 
+const THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000;
+
+interface ChessAccount {
+  platform: string;
+  username: string;
+}
+
 interface UserRecord {
   id: string;
   username: string;
@@ -20,6 +27,9 @@ interface UserRecord {
   favoriteOpening?: string;
   preferredSide?: "White" | "Black" | "Both";
   avatarColor?: string;
+  hideFromLeaderboard?: boolean;
+  chessAccounts?: ChessAccount[];
+  displayNameChangedAt?: string;
 }
 
 interface UsersDb {
@@ -35,6 +45,12 @@ function saveUsers(db: UsersDb): void {
 }
 
 function toProfile(u: UserRecord) {
+  const now = Date.now();
+  const lastChanged = u.displayNameChangedAt ? new Date(u.displayNameChangedAt).getTime() : 0;
+  const nextAllowedChange = lastChanged + THREE_DAYS_MS;
+  const canChangeName = now >= nextAllowedChange;
+  const nextNameChangeAt = canChangeName ? null : new Date(nextAllowedChange).toISOString();
+
   return {
     id: u.id,
     username: u.username,
@@ -50,6 +66,10 @@ function toProfile(u: UserRecord) {
     favoriteOpening: u.favoriteOpening ?? "",
     preferredSide: u.preferredSide ?? "Both",
     avatarColor: u.avatarColor ?? "gold",
+    hideFromLeaderboard: u.hideFromLeaderboard ?? false,
+    chessAccounts: u.chessAccounts ?? [],
+    canChangeName,
+    nextNameChangeAt,
   };
 }
 
@@ -136,25 +156,60 @@ router.patch("/profile", (req, res) => {
   const userId = verifyToken(token);
   if (!userId) { res.status(401).json({ error: "Invalid or expired token" }); return; }
 
-  const { displayName, bio, country, favoriteOpening, preferredSide, avatarColor } = req.body as {
+  const {
+    displayName,
+    bio,
+    country,
+    favoriteOpening,
+    preferredSide,
+    avatarColor,
+    hideFromLeaderboard,
+    chessAccounts,
+  } = req.body as {
     displayName?: string;
     bio?: string;
     country?: string;
     favoriteOpening?: string;
     preferredSide?: "White" | "Black" | "Both";
     avatarColor?: string;
+    hideFromLeaderboard?: boolean;
+    chessAccounts?: ChessAccount[];
   };
 
   const db = getUsers();
   const user = db.users.find((u) => u.id === userId);
   if (!user) { res.status(404).json({ error: "User not found" }); return; }
 
-  if (displayName !== undefined) user.displayName = displayName.trim() || user.username;
+  if (displayName !== undefined) {
+    const trimmed = displayName.trim() || user.username;
+    if (trimmed !== user.displayName) {
+      const now = Date.now();
+      const lastChanged = user.displayNameChangedAt ? new Date(user.displayNameChangedAt).getTime() : 0;
+      if (now - lastChanged < THREE_DAYS_MS) {
+        const nextAllowed = new Date(lastChanged + THREE_DAYS_MS).toISOString();
+        res.status(429).json({
+          error: "Display name can only be changed once every 3 days.",
+          nextAllowedAt: nextAllowed,
+        });
+        return;
+      }
+      user.displayName = trimmed;
+      user.displayNameChangedAt = new Date().toISOString();
+    }
+  }
+
   if (bio !== undefined) user.bio = bio.slice(0, 300);
   if (country !== undefined) user.country = country;
   if (favoriteOpening !== undefined) user.favoriteOpening = favoriteOpening;
   if (preferredSide !== undefined) user.preferredSide = preferredSide;
   if (avatarColor !== undefined) user.avatarColor = avatarColor;
+  if (hideFromLeaderboard !== undefined) user.hideFromLeaderboard = hideFromLeaderboard;
+  if (chessAccounts !== undefined) {
+    user.chessAccounts = chessAccounts
+      .filter((a) => a.platform && a.username.trim())
+      .map((a) => ({ platform: a.platform, username: a.username.trim() }))
+      .slice(0, 5);
+  }
 
   saveUsers(db);
   res.json({ user: toProfile(user) });

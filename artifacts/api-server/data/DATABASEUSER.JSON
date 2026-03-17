@@ -1,8 +1,8 @@
 {
   "users": [
     {
-      "id": "user_1773734613336_zf60uz1axve",
-      "username": "Art",
+      "id": "user_1773760962281_vvhg6w1bbb",
+      "username": "Artin",
       "email": "artin.zomorodian@outlook.com",
       "displayName": "Artin",
       "passwordHash": "8e07e8c3e3e1cb62b1f9f7015ccca9eb9c33613dc46cc620481732fdee08458b",
@@ -10,24 +10,19 @@
       "rating": 800,
       "lessonsCompleted": 0,
       "openingsStudied": 0,
-      "joinedAt": "2026-03-17T08:03:33.336Z"
-    },
-    {
-      "id": "user_1773735963274_4ilk2j2k1vf",
-      "username": "testprofile123",
-      "email": "test@test.com",
-      "displayName": "Grand Master",
-      "passwordHash": "b70f8d9e4e05e044f65114d961719279823295554e8af6b83c1bf58b4db4da21",
-      "level": "Beginner",
-      "rating": 800,
-      "lessonsCompleted": 0,
-      "openingsStudied": 0,
-      "joinedAt": "2026-03-17T08:26:03.274Z",
-      "bio": "I love chess!",
-      "country": "Germany",
-      "favoriteOpening": "Ruy López",
+      "joinedAt": "2026-03-17T15:22:42.282Z",
+      "bio": "",
+      "country": "Iran",
+      "favoriteOpening": "Sicilian Dragon",
       "preferredSide": "White",
-      "avatarColor": "royal"
+      "avatarColor": "crimson",
+      "hideFromLeaderboard": true,
+      "chessAccounts": [
+        {
+          "platform": "Chess.com",
+          "username": "ArtinZomorodian"
+        }
+      ]
     }
   ]
 }

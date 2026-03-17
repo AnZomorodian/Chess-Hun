@@ -6,7 +6,8 @@ import {
   Trophy, Flame, Book, Shield, Star, Crown, Check, X,
   LogOut, Calendar, Target, Award, TrendingUp, Loader2, ChevronRight,
   User, Lock, Palette, Globe, BookOpen, Swords, Save, Eye, EyeOff,
-  Edit3, AlertCircle, CheckCircle2,
+  Edit3, AlertCircle, CheckCircle2, Plus, Trash2,
+  ExternalLink, Clock,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -70,6 +71,8 @@ export default function Profile() {
   const [favoriteOpening, setFavoriteOpening] = useState("");
   const [preferredSide, setPreferredSide] = useState<"White" | "Black" | "Both">("Both");
   const [avatarColor, setAvatarColor] = useState("gold");
+  const [hideLeaderboard, setHideLeaderboard] = useState(false);
+  const [chessAccounts, setChessAccounts] = useState<{ platform: string; username: string }[]>([]);
 
   // Password form
   const [currentPw, setCurrentPw] = useState("");
@@ -86,6 +89,8 @@ export default function Profile() {
       setFavoriteOpening((user as any).favoriteOpening || "");
       setPreferredSide((user as any).preferredSide || "Both");
       setAvatarColor((user as any).avatarColor || "gold");
+      setHideLeaderboard((user as any).hideFromLeaderboard ?? false);
+      setChessAccounts((user as any).chessAccounts ?? []);
     }
   }, [user]);
 
@@ -103,11 +108,34 @@ export default function Profile() {
   const avatarColors = COLOR_MAP[(user as any).avatarColor || "gold"] || COLOR_MAP["gold"];
 
   const handleSaveProfile = () => {
-    updateProfile.mutate({ displayName, bio, country, favoriteOpening, preferredSide, avatarColor }, {
-      onSuccess: () => toast({ title: "Profile Updated", description: "Your changes have been saved." }),
-      onError: (e) => toast({ variant: "destructive", title: "Error", description: e.message }),
-    });
+    updateProfile.mutate(
+      { displayName, bio, country, favoriteOpening, preferredSide, avatarColor, hideFromLeaderboard: hideLeaderboard, chessAccounts } as any,
+      {
+        onSuccess: () => toast({ title: "Profile Updated", description: "Your changes have been saved." }),
+        onError: (e: any) => {
+          const msg = e?.response?.data?.error || e.message || "Something went wrong.";
+          toast({ variant: "destructive", title: "Error", description: msg });
+        },
+      }
+    );
   };
+
+  const addChessAccount = () => {
+    if (chessAccounts.length < 4) {
+      setChessAccounts([...chessAccounts, { platform: "Chess.com", username: "" }]);
+    }
+  };
+
+  const removeChessAccount = (i: number) => {
+    setChessAccounts(chessAccounts.filter((_, idx) => idx !== i));
+  };
+
+  const updateChessAccount = (i: number, field: "platform" | "username", value: string) => {
+    setChessAccounts(chessAccounts.map((a, idx) => idx === i ? { ...a, [field]: value } : a));
+  };
+
+  const canChangeName = (user as any).canChangeName ?? true;
+  const nextNameChangeAt = (user as any).nextNameChangeAt as string | null;
 
   const handleChangePassword = () => {
     if (newPw !== confirmPw) {
@@ -169,17 +197,40 @@ export default function Profile() {
 
             {/* Info */}
             <div className="flex-1 text-center sm:text-left min-w-0">
-              <h1 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-0.5">
+              <h1 className="text-3xl sm:text-4xl font-display font-bold mb-1 bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent">
                 {user.displayName || user.username}
               </h1>
-              <p className="text-muted-foreground text-sm mb-1">@{user.username} · {user.email}</p>
-              {(user as any).bio && <p className="text-sm text-muted-foreground/80 italic mb-1 line-clamp-2">"{(user as any).bio}"</p>}
-              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs text-muted-foreground mt-2">
-                <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5" /> Joined {new Date(user.joinedAt).toLocaleDateString("en-US", { month: "long", year: "numeric" })}</span>
-                {(user as any).country && <span className="flex items-center gap-1"><Globe className="w-3.5 h-3.5" /> {(user as any).country}</span>}
-                {(user as any).favoriteOpening && <span className="flex items-center gap-1"><BookOpen className="w-3.5 h-3.5" /> Loves: {(user as any).favoriteOpening}</span>}
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-2">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold">
+                  @{user.username}
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary border border-border text-muted-foreground text-xs">
+                  {user.email}
+                </span>
+              </div>
+              {(user as any).bio && <p className="text-sm text-muted-foreground/80 italic mb-2 line-clamp-2">"{(user as any).bio}"</p>}
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-1">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary border border-border text-xs text-muted-foreground">
+                  <Calendar className="w-3 h-3 text-primary" />
+                  Joined {new Date(user.joinedAt).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                </span>
+                {(user as any).country && (
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary border border-border text-xs text-muted-foreground">
+                    <Globe className="w-3 h-3 text-primary" />
+                    {(user as any).country}
+                  </span>
+                )}
+                {(user as any).favoriteOpening && (
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs text-amber-400">
+                    <BookOpen className="w-3 h-3" />
+                    {(user as any).favoriteOpening}
+                  </span>
+                )}
                 {(user as any).preferredSide && (user as any).preferredSide !== "Both" && (
-                  <span className="flex items-center gap-1"><Swords className="w-3.5 h-3.5" /> Plays {(user as any).preferredSide}</span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary border border-border text-xs text-muted-foreground">
+                    <Swords className="w-3 h-3 text-primary" />
+                    Plays {(user as any).preferredSide}
+                  </span>
                 )}
               </div>
             </div>
@@ -315,6 +366,41 @@ export default function Profile() {
               </div>
             </div>
 
+            {/* Chess Platform Accounts */}
+            {((user as any).chessAccounts?.length ?? 0) > 0 && (
+              <div className="glass-panel rounded-2xl border border-border/50 p-6">
+                <h2 className="text-base font-bold mb-4 flex items-center gap-2">
+                  ♟ Chess Platform Accounts
+                </h2>
+                <div className="flex flex-wrap gap-3">
+                  {((user as any).chessAccounts as { platform: string; username: string }[]).map((acc, i) => {
+                    const platformUrls: Record<string, string> = {
+                      "Chess.com": `https://www.chess.com/member/${acc.username}`,
+                      "Lichess": `https://lichess.org/@/${acc.username}`,
+                      "ChessKid": `https://www.chesskid.com/member/${acc.username}`,
+                      "FIDE": `https://ratings.fide.com/search.phtml?search=${acc.username}`,
+                    };
+                    const url = platformUrls[acc.platform];
+                    const platformColors: Record<string, string> = {
+                      "Chess.com": "bg-green-500/10 border-green-500/20 text-green-400",
+                      "Lichess": "bg-blue-500/10 border-blue-500/20 text-blue-400",
+                      "ChessKid": "bg-yellow-500/10 border-yellow-500/20 text-yellow-400",
+                      "FIDE": "bg-orange-500/10 border-orange-500/20 text-orange-400",
+                    };
+                    const colorClass = platformColors[acc.platform] || "bg-secondary/40 border-border text-muted-foreground";
+                    return (
+                      <a key={i} href={url} target="_blank" rel="noopener noreferrer"
+                        className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all hover:scale-105 ${colorClass}`}>
+                        <span className="font-bold text-xs opacity-70">{acc.platform}</span>
+                        <span className="font-mono">{acc.username}</span>
+                        <ExternalLink className="w-3 h-3 opacity-60" />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
             {/* Achievements */}
             <div className="glass-panel rounded-2xl border border-border/50 p-6">
               <h2 className="text-base font-bold mb-5 flex items-center gap-2">
@@ -365,8 +451,19 @@ export default function Profile() {
             <div>
               <label className="text-sm font-semibold text-foreground/80 block mb-1.5">Display Name</label>
               <input value={displayName} onChange={(e) => setDisplayName(e.target.value)} maxLength={40}
-                className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all text-sm"
+                disabled={!canChangeName}
+                className={cn("w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all text-sm",
+                  !canChangeName && "opacity-60 cursor-not-allowed")}
                 placeholder="Your display name" />
+              {!canChangeName && nextNameChangeAt && (
+                <p className="text-xs text-amber-400 mt-1.5 flex items-center gap-1.5">
+                  <Clock className="w-3 h-3" />
+                  Name change available on {new Date(nextNameChangeAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                </p>
+              )}
+              {canChangeName && (
+                <p className="text-xs text-muted-foreground mt-1">You can change your display name once every 3 days.</p>
+              )}
             </div>
 
             {/* Bio */}
@@ -408,6 +505,69 @@ export default function Profile() {
                 <option value="">Select your favorite opening...</option>
                 {OPENINGS_LIST.map((o) => <option key={o} value={o}>{o}</option>)}
               </select>
+            </div>
+
+            {/* Chess Accounts */}
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <label className="text-sm font-semibold text-foreground/80 flex items-center gap-1.5">
+                  ♟ Chess Platform Accounts
+                </label>
+                {chessAccounts.length < 4 && (
+                  <button onClick={addChessAccount}
+                    className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 transition-colors font-semibold">
+                    <Plus className="w-3 h-3" /> Add Account
+                  </button>
+                )}
+              </div>
+              {chessAccounts.length === 0 && (
+                <p className="text-sm text-muted-foreground italic py-2">No chess accounts linked yet. Add your chess.com or lichess username!</p>
+              )}
+              <div className="space-y-2.5">
+                {chessAccounts.map((acc, i) => (
+                  <div key={i} className="flex gap-2 items-center">
+                    <select value={acc.platform} onChange={(e) => updateChessAccount(i, "platform", e.target.value)}
+                      className="px-3 py-2.5 rounded-xl bg-secondary/40 border border-border focus:outline-none focus:border-primary text-sm appearance-none cursor-pointer shrink-0 w-36">
+                      {["Chess.com", "Lichess", "ChessKid", "FIDE"].map((p) => <option key={p} value={p}>{p}</option>)}
+                    </select>
+                    <input value={acc.username} onChange={(e) => updateChessAccount(i, "username", e.target.value)}
+                      className="flex-1 px-4 py-2.5 rounded-xl bg-secondary/40 border border-border focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all text-sm"
+                      placeholder="Your username on that platform" maxLength={50} />
+                    <button onClick={() => removeChessAccount(i)}
+                      className="p-2.5 rounded-xl text-muted-foreground hover:text-red-400 hover:bg-red-400/10 border border-border hover:border-red-400/20 transition-all shrink-0">
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground mt-2">These will be shown on your profile and the leaderboard for other players to see.</p>
+            </div>
+
+            {/* Leaderboard Privacy */}
+            <div className="p-4 rounded-2xl bg-secondary/30 border border-border/50">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-semibold text-foreground">Hide from Leaderboard</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Your profile won't appear in the public rankings</p>
+                </div>
+                <button onClick={() => setHideLeaderboard(!hideLeaderboard)}
+                  className={cn(
+                    "relative w-12 h-6 rounded-full border-2 transition-all duration-300 focus:outline-none",
+                    hideLeaderboard
+                      ? "bg-primary border-primary"
+                      : "bg-secondary border-border"
+                  )}>
+                  <span className={cn(
+                    "absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform duration-300",
+                    hideLeaderboard ? "translate-x-6" : "translate-x-0"
+                  )} />
+                </button>
+              </div>
+              {hideLeaderboard && (
+                <p className="text-xs text-amber-400 mt-2 flex items-center gap-1.5">
+                  <EyeOff className="w-3 h-3" /> You are hidden from the leaderboard. Only you can still see your own entry.
+                </p>
+              )}
             </div>
 
             {/* Save Button */}

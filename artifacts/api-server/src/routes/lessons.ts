@@ -1608,6 +1608,622 @@ Watch out for these initiative-killers:
     ],
   },
   {
+    id: "alekhine-defense-lesson",
+    title: "Alekhine's Defense: The Art of Provocation",
+    description: "Master Alekhine's bold hypermodern strategy — lure White into over-extending and then strike the center apart.",
+    category: "Openings",
+    difficulty: "Intermediate",
+    duration: 20,
+    order: 21,
+    content: `# Alekhine's Defense: The Art of Provocation
+
+Named after World Champion Alexander Alekhine, this opening is one of the boldest ideas in chess. Instead of occupying the center, Black **provokes** White to build a large center — then attacks it.
+
+## The Main Idea
+
+After **1. e4 Nf6**, Black dares White to chase the knight:
+
+- **2. e5 Nd5** — the knight retreats to d5
+- **3. d4** — White builds the center
+- **3...d6** — Black immediately challenges it
+
+The knight acts as bait. While White tries to keep the knight uncomfortable, Black develops pieces and prepares to tear the center apart.
+
+## The Three Main Variations
+
+### 1. Four Pawns Attack (B03)
+**1. e4 Nf6 2. e5 Nd5 3. d4 d6 4. c4 Nb6 5. f4**
+
+White builds a **massive pawn center** — four pawns on e5, d4, c4, f4. It looks crushing, but it's overextended.
+
+**Black's plan:**
+- Play ...dxe5 to attack the center
+- Follow with ...Nc6 to add pressure on d4
+- Use ...Bg4 to pin the Nf3 and weaken d4
+- The d5 break (...d5!) often shatters White's center completely
+
+> "The bigger they are, the harder they fall." — This is Alekhine's philosophy.
+
+### 2. Modern Variation (B04)
+**1. e4 Nf6 2. e5 Nd5 3. Nf3 d6 4. d4 Bg4**
+
+White plays more modestly — the center is smaller but more stable.
+
+**Black's plan:**
+- Pin the Nf3 with ...Bg4 (trade it if White plays h3)
+- Play ...dxe5 to release central tension
+- Develop actively with ...Nc6, ...e5 or ...c5 depending on structure
+- Use the open d-file for rook activity after ...dxe5 dxe5
+
+### 3. Exchange Variation (B03)
+**1. e4 Nf6 2. e5 Nd5 3. d4 d6 4. c4 Nb6 5. exd6**
+
+White releases the tension early by exchanging. The result is a symmetrical-ish position where:
+- **...cxd6**: Black gets an open c-file, queenside play, and active bishops
+- **...exd6**: Classical structure — solid development and easy play
+
+## Strategic Themes for Black
+
+### The Center Dissolution
+Black's primary goal is to **destroy White's pawn center**:
+1. ...d6 (attack e5 from the start)
+2. ...dxe5 (remove the e5 pawn when the time is right)
+3. ...c5 (attack d4 from the queenside)
+4. ...e5 (once the center is dissolved, establish control of e5)
+
+### Piece Activity Over Structure
+Alekhine's Defense produces **unbalanced pawn structures** — White often has a mobile pawn center while Black has piece activity. Black must use this activity quickly:
+- Aim rooks at open files (d-file, c-file after ...c5)
+- Use the knight's natural retreats: Nd5→b6→c4 or Nd5→f6→e4
+
+### The f6 Knight's Role
+The knight on f6 → d5 → b6 (or f4, or c4) is the hero of this opening. Route it to an outpost:
+- **Nc4**: targets the b2 pawn and d3 square
+- **Nf4**: targets g2 and h3 if the kingside opens
+- **Nd5**: returns to the center — a powerful centralized piece
+
+## Key Principle
+
+> "The knight is a magnet. White chases it, but in doing so, creates the very weaknesses Black needs."
+
+Alekhine's Defense is not for everyone — it requires confidence, preparation, and a taste for complex, asymmetrical battles. But in the right hands, it's a devastating weapon.`,
+    exercises: [
+      {
+        id: "al-1",
+        type: "multiple-choice",
+        question: "What is the key strategic idea behind Alekhine's Defense?",
+        options: [
+          "Occupy the center immediately with pawns",
+          "Provoke White to build a large center, then attack and destroy it",
+          "Trade all pieces for a drawn endgame",
+          "Develop all pieces before touching central pawns",
+        ],
+        answer: "Provoke White to build a large center, then attack and destroy it",
+        explanation: "Alekhine's Defense is built on hypermodern philosophy — allow White to build a center, then undermine it. The knight on f6 is 'bait' that lures White's pawns forward, and Black later tears them down with ...d6, ...dxe5, and ...c5.",
+      },
+      {
+        id: "al-2",
+        type: "multiple-choice",
+        question: "In the Four Pawns Attack (e5-d4-c4-f4), what is Black's most powerful counter?",
+        options: [
+          "Castle immediately and defend passively",
+          "Attack the center with ...dxe5 and ...Nc6, then the d5 pawn break",
+          "Trade queens early to simplify",
+          "Put the bishop on g4 and never move it",
+        ],
+        answer: "Attack the center with ...dxe5 and ...Nc6, then the d5 pawn break",
+        explanation: "The Four Pawns Attack looks ferocious but is overextended. Black's plan is to attack the center: ...dxe5 removes the e5 outpost, ...Nc6 adds pressure on d4, and eventually ...d5 shatters the entire White center. Preparation is key!",
+      },
+      {
+        id: "al-3",
+        type: "multiple-choice",
+        question: "After the Exchange Variation (5. exd6), which recapture gives Black the most active play?",
+        options: [
+          "5...Nxd6 — the knight recaptures centrally",
+          "5...cxd6 — opens the c-file for rook play and queenside activity",
+          "5...Qxd6 — the queen develops early",
+          "5...Kd7 — the king recaptures to avoid queen trades",
+        ],
+        answer: "5...cxd6 — opens the c-file for rook play and queenside activity",
+        explanation: "Recapturing with ...cxd6 gives Black a half-open c-file for the rooks and an active bishop on e6 or g4. The asymmetrical pawn structure (d-pawn vs c-pawn) creates counterplay. The ...exd6 recapture is more classical and solid but less dynamic.",
+      },
+    ],
+  },
+  {
+    id: "rook-coordination",
+    title: "Rook Coordination & Open Files",
+    description: "Learn how to maximize your rooks — the most powerful long-range pieces — through file control and coordination.",
+    category: "Strategy",
+    difficulty: "Intermediate",
+    duration: 18,
+    order: 22,
+    content: `# Rook Coordination & Open Files
+
+Rooks are the most underused pieces in amateur chess. They start in the corner and often stay passive for the whole game. Mastering rooks means mastering one of the most powerful pieces on the board.
+
+## The Golden Rule: Open Files
+
+A rook on an **open file** (a file with no pawns on it) is far more powerful than a rook buried behind pawns.
+
+**Semi-open file**: a file with no friendly pawn, but an enemy pawn.
+**Open file**: a file with no pawns at all.
+
+> "Rooks belong on open files." — Every chess book ever written.
+
+**How to get open files:**
+1. Exchange pawns to open a file (pawn trade = open file)
+2. Advance a pawn to force an exchange
+3. Sacrifice a pawn to open the e or d file for your rooks
+
+## Doubling Rooks
+
+**Doubling** means placing both rooks on the same file. This is devastating when:
+- The file is open or will soon open
+- There is a target on that file (an enemy piece or pawn)
+- The enemy rooks cannot counter-double
+
+**Classic example:** Rooks doubled on the 7th rank. Both rooks on the opponent's 7th rank is often called a "Pig" formation — it's extremely powerful, attacking all the opponent's pawns from behind.
+
+## The 7th Rank
+
+A rook on the **7th rank** (or 2nd rank for Black) is one of the most powerful rook placements:
+- It attacks all pawns still on their starting squares
+- It cuts off the enemy king from the rest of the board
+- Two rooks on the 7th rank often force checkmate directly
+
+**Example:** R7h7 + Ra7 — the "Two Pigs" that devour pawns and dominate the board.
+
+## Rook Behind Passed Pawns
+
+As Nimzowitsch said: **"Rooks belong behind passed pawns."**
+
+- **Your own passed pawn**: Put your rook behind it — as the pawn advances, the rook gains power
+- **Enemy passed pawn**: Put your rook behind theirs — restrain and eventually win the pawn
+
+This rule applies in almost every endgame position.
+
+## Rook Lifts
+
+A **rook lift** is when the rook uses a rank (not a file) to get into the attack.
+
+**Example:** Rook on a1 → Ra1-Ra3-Rg3 (lifted via the 3rd rank) attacking the kingside.
+
+Rook lifts are excellent attacking tools because:
+- The rook bypasses blocked pawn structures
+- It attacks from a direction your opponent doesn't expect
+- Combined with a pawn storm, the lift creates overwhelming pressure
+
+## Activating Rooks: Step-by-Step
+
+1. **Castle and connect the rooks** — the most important first step
+2. **Open a file** — advance or exchange a pawn to create an open file
+3. **Place rooks on that file** — ideally the most central open file (d or e)
+4. **Double on the file** — bring the second rook
+5. **Penetrate to the 7th rank** — if you can get a rook to the 7th, your position is usually winning`,
+    exercises: [
+      {
+        id: "rc-1",
+        type: "multiple-choice",
+        question: "What is the most important thing you must do to maximize your rook's power?",
+        options: [
+          "Keep the rook on the back rank for safety",
+          "Place the rook on an open or semi-open file",
+          "Move the rook to attack the enemy king immediately",
+          "Trade the rook for a bishop early",
+        ],
+        answer: "Place the rook on an open or semi-open file",
+        explanation: "A rook on a closed file, blocked by its own pawns, is nearly useless. Rooks need open files to exert power. Open or semi-open files give the rook a clear path to attack enemy pawns, penetrate to the 7th rank, or support passed pawns.",
+      },
+      {
+        id: "rc-2",
+        type: "multiple-choice",
+        question: "What is a 'rook lift' and why is it effective?",
+        options: [
+          "Promoting a pawn to a rook",
+          "Moving a rook along a rank to attack from an unexpected direction",
+          "Placing a rook on the 7th rank",
+          "Sacrificing a rook for a pawn",
+        ],
+        answer: "Moving a rook along a rank to attack from an unexpected direction",
+        explanation: "A rook lift uses the rook's ability to move along ranks to reposition it from one side of the board to another. This bypasses blocked pawn chains and lets the rook join the attack from an unexpected direction — like Ra1-Ra3-Rg3 targeting the kingside.",
+      },
+      {
+        id: "rc-3",
+        type: "multiple-choice",
+        question: "You have a passed pawn on d5 and your rook is on d1. Where should you put your rook?",
+        options: [
+          "In front of the pawn on d6 to clear the path",
+          "To the side on e1 to support the pawn",
+          "Behind the pawn on d1 — rooks belong BEHIND passed pawns",
+          "Trade the rook for an active bishop",
+        ],
+        answer: "Behind the pawn on d1 — rooks belong BEHIND passed pawns",
+        explanation: "Rooks belong BEHIND their passed pawns! As the pawn advances from d5 to d6 to d7, the rook on d1 gains more and more power — the open squares in front grow. A rook in front of the pawn blocks it; a rook behind the pawn pushes it.",
+      },
+    ],
+  },
+  {
+    id: "art-of-sacrifice",
+    title: "The Art of Sacrifice: When to Give It All Up",
+    description: "Discover when and why great players sacrifice material — and how to calculate if the compensation is real.",
+    category: "Tactics",
+    difficulty: "Advanced",
+    duration: 24,
+    order: 23,
+    content: `# The Art of Sacrifice in Chess
+
+A sacrifice is one of chess's most thrilling and powerful tools. Giving up material — voluntarily! — to gain something more valuable. Learning to sacrifice correctly separates good players from great ones.
+
+## Why Sacrifice?
+
+Sacrifices are made for one or more of these reasons:
+
+1. **Destroy the enemy king's shelter** (open lines for attack)
+2. **Gain a decisive tempo** (speed is more valuable than material)
+3. **Create an unstoppable passed pawn**
+4. **Win back more material than you gave** (tactical refund)
+5. **Achieve a positional advantage** that lasts forever
+
+## Types of Sacrifices
+
+### Tactical Sacrifice (Combination)
+A sacrifice with a **forced refund** — you calculate every move and know you win the material back (or deliver checkmate).
+
+**Example:** The Greek Gift sacrifice — Bxh7+ Kxh7, Ng5+ Kg8, Qh5 ... — a forcing sequence leading to checkmate or winning material.
+
+### Positional Sacrifice
+A sacrifice where the compensation is **long-term and positional**, not immediate. You give up material but get:
+- Active pieces
+- A powerful outpost
+- A permanent structural advantage
+
+### Gambit (Opening Sacrifice)
+Giving a **pawn in the opening** to gain:
+- Rapid development
+- Open lines
+- Control of key squares
+
+Examples: King's Gambit, Queen's Gambit, Benko Gambit.
+
+### Exchange Sacrifice
+Giving a **rook for a bishop or knight** to:
+- Install a knight on an outpost
+- Get rid of a powerful defensive piece
+- Create an unbreakable position
+
+### The Greek Gift (Classic Attack Pattern)
+**Bxh7+ Kxh7 Ng5+ Kg8/Kh6 Qh5...**
+
+The classic bishop sacrifice on h7 (or h2 for Black) to expose the king. It works when:
+- The g-file is open or can be opened
+- Your knight can reach g5 in one move
+- The queen can come to h5 quickly
+
+## Evaluating a Sacrifice: The 3 Questions
+
+Before sacrificing, always ask:
+
+### 1. What do I get?
+Calculate the concrete gains: open files, piece activity, king attack, structural damage to the opponent.
+
+### 2. Can my opponent defend?
+Calculate ALL the defensive possibilities. A sacrifice that fails against the best defense is just a blunder.
+
+### 3. What happens at the end of the line?
+Evaluate the resulting position. Is your "compensation" real? Will you win the material back? Will you checkmate?
+
+## Famous Historical Sacrifices
+
+### Morphy's Opera Game (1858)
+Paul Morphy sacrificed a bishop and rook against the Duke of Brunswick: **Rxb2! Rxb2 Rd8#** — a pure combination showing the power of development and open lines.
+
+### Tal vs Botvinnik (1960 World Championship)
+Mikhail Tal regularly sacrificed pieces for positions so complex that even Botvinnik — a calculating machine — couldn't find the defensive resources. Tal's philosophy: **"You must take your opponent into deep dark forest where 2+2=5."**
+
+### Kasparov vs Topalov (1999 — Kasparov's Immortal)
+Qd4! followed by Rxd4, Nxd4, Re7+, Kf8, Rf7+... A cascade of moves that seemed to give away material but led to an unstoppable attack.
+
+## The Practical Skill: Calculating Sacrifices
+
+When you spot a sacrifice, use this method:
+1. **Play it out in your head** — don't move yet
+2. **Find the opponent's best defense** — not the worst defense
+3. **Verify you win/draw** after the best defense
+4. **Check back-rank tactics** — don't miss a simple counter
+
+> "Chess is not about material — it's about activity and king safety." — Tal`,
+    exercises: [
+      {
+        id: "sac-1",
+        type: "multiple-choice",
+        question: "What is the 'Greek Gift' sacrifice?",
+        options: [
+          "Sacrificing the queen on f7",
+          "Sacrificing the bishop on h7 (or h2 for Black) to expose the enemy king to attack",
+          "Giving up both bishops for two knights",
+          "A pawn sacrifice in the opening",
+        ],
+        answer: "Sacrificing the bishop on h7 (or h2 for Black) to expose the enemy king to attack",
+        explanation: "The Greek Gift is the classic Bxh7+ sacrifice. After Kxh7, White plays Ng5+ to drive the king out, then Qh5 with devastating attacking threats. It works when the g-file can be opened and the knight can reach g5 immediately.",
+      },
+      {
+        id: "sac-2",
+        type: "multiple-choice",
+        question: "What is the most important thing to calculate before making a sacrifice?",
+        options: [
+          "How surprised your opponent will look",
+          "How many points of material you are giving up",
+          "Your opponent's BEST defensive reply — not the worst",
+          "Whether your sacrifice follows a famous game pattern",
+        ],
+        answer: "Your opponent's BEST defensive reply — not the worst",
+        explanation: "Sacrifices often look brilliant against passive defense, but fall apart against the best response. Always ask: 'What is my opponent's strongest reply?' If your sacrifice still works after their best defense — it's sound. If not, it's a blunder.",
+      },
+      {
+        id: "sac-3",
+        type: "multiple-choice",
+        question: "A 'positional sacrifice' differs from a tactical sacrifice because:",
+        options: [
+          "You give up the queen, not just a minor piece",
+          "There is no immediate tactical refund — the compensation is long-term and positional",
+          "It happens in the endgame, not the middlegame",
+          "You always get the material back in exactly 3 moves",
+        ],
+        answer: "There is no immediate tactical refund — the compensation is long-term and positional",
+        explanation: "A tactical sacrifice has a forced, concrete refund (you calculate and know you win the material back). A positional sacrifice accepts material deficit permanently — you get compensation in activity, structure, or dominant pieces that the material alone cannot buy.",
+      },
+    ],
+  },
+  {
+    id: "passed-pawn-techniques",
+    title: "Passed Pawn Promotion Techniques",
+    description: "Learn how to create, support, and promote passed pawns — the most decisive winning technique in endgames.",
+    category: "Endgame",
+    difficulty: "Advanced",
+    duration: 22,
+    order: 24,
+    content: `# Passed Pawn Promotion Techniques
+
+A passed pawn is a potential queen. Converting that potential into reality is one of chess's most important endgame skills.
+
+## Creating a Passed Pawn
+
+### Pawn Majority
+When you have more pawns on one side of the board than your opponent, you have a **pawn majority** — and can often create a passed pawn.
+
+**Method:** Advance your majority, forcing exchanges, until one pawn has no opposition.
+
+**Example:** White has pawns on a2, b2, c2 vs Black's a7, b7. Advance a2-a4, b2-b4, c2-c4 — eventually trade pawns and one passer remains.
+
+### The Pawn Breakthrough
+Sometimes you can **sacrifice pawns** to create a passer.
+
+**Classic pattern (three pawns vs three pawns):**
+White: a5, b5, c5 vs Black: a7, b7, c7
+
+**1. b6! axb6** (if 1...cxb6 2.c6 bxc6 3.a6 wins)
+**2. c6! bxc6 3. a6!** — the a-pawn queens!
+
+This sacrifice creates an unstoppable pawn. Knowing this pattern wins games.
+
+## Escorting a Passer to Promotion
+
+### King as Escort
+The king must **lead the passed pawn** — not follow it.
+
+**Winning position:** White king on e6, pawn on e5. The king marches to e7 first, then the pawn follows.
+
+**Losing position:** White king on e4, pawn on e5. The pawn blocks the king's path — you need to maneuver the king around.
+
+### The "Shouldering" Technique
+When the enemy king rushes to stop your passer, use your king to **shoulder it off** the direct path.
+
+**Example:** White king on d5, passer on d4, Black king racing from e8. 
+King d5-c6-c7-c8 cuts the Black king off from the promotion square!
+
+### Outside Passed Pawn
+In rook endgames and king-pawn endgames, an **outside passed pawn** on the edge of the board is often the decisive factor.
+
+**The idea:** Use the outside passer as a **decoy**. Advance it to force the enemy king to chase it. Meanwhile, your king invades on the other side and wins the pawns there.
+
+## Blockade: Stopping the Enemy Passer
+
+A well-placed blockader can neutralize even a powerful passed pawn:
+
+- **Knight on the square in front**: The pawn can't push it away
+- **King in front**: The most secure blockade
+- **Rook in front**: Less efficient — the rook is more powerful from behind
+
+**Breaking the blockade:**
+1. Sacrifice material to remove the blockader
+2. Use zugzwang to force the blockader to move
+3. Create a second passed pawn to distract the blockader
+
+## Queening Race: King vs Pawn
+
+When both sides have a passer, it becomes a race. Use these rules:
+
+1. **Count the moves** — whoever queens first wins (usually)
+2. **Check opportunities** — a check gains a critical tempo in the race
+3. **The opposition** — holding the opposition controls whether you can escort your pawn
+
+## The Most Important Endgame Rule
+
+> "Passed pawns must be pushed!" — Aaron Nimzowitsch
+
+A passed pawn that stands still does nothing. Advance it immediately — every tempo counts. The threat of promotion forces your opponent to commit resources, creating opportunities elsewhere.`,
+    exercises: [
+      {
+        id: "pp-1",
+        type: "multiple-choice",
+        question: "In a king and pawn endgame, should the king LEAD the pawn or FOLLOW it?",
+        options: [
+          "Follow — protect the pawn from behind",
+          "Lead — go ahead of the pawn to secure key squares",
+          "Stay beside — on the same rank",
+          "Go to the opposite side of the board",
+        ],
+        answer: "Lead — go ahead of the pawn to secure key squares",
+        explanation: "The king must lead the pawn to promotion! A king that lags behind the pawn cannot secure the key squares in front of it. Get the king to the 6th rank (e.g., e6 with pawn on e5) and then advance the pawn — the king guarantees safe passage.",
+      },
+      {
+        id: "pp-2",
+        type: "multiple-choice",
+        question: "What is an 'outside passed pawn' used for in king-pawn endgames?",
+        options: [
+          "To promote immediately on the edge of the board",
+          "As a decoy — drag the enemy king away so your king can invade on the other side",
+          "To protect your own king from checks",
+          "To trade for an enemy pawn closer to the center",
+        ],
+        answer: "As a decoy — drag the enemy king away so your king can invade on the other side",
+        explanation: "An outside passed pawn on the edge (a or h file) forces the enemy king to chase it. While that king races to stop the passer, YOUR king invades the center or queenside and wins the remaining pawns. It's a classic 'decoy' technique that wins endgames.",
+      },
+      {
+        id: "pp-3",
+        type: "multiple-choice",
+        question: "You have pawns on a5, b5, c5 and your opponent has pawns on a7, b7, c7. What is the winning breakthrough?",
+        options: [
+          "Push a5-a6 and wait",
+          "b6! — sacrifice the b-pawn to create an unstoppable passed pawn",
+          "c6 first, then b6",
+          "Trade all three pawns for a draw",
+        ],
+        answer: "b6! — sacrifice the b-pawn to create an unstoppable passed pawn",
+        explanation: "The classic breakthrough: 1.b6! axb6 2.c6! bxc6 3.a6 — the a-pawn now queens! Or 1.b6! cxb6 2.a6! bxa6 3.c6 — the c-pawn queens! This sacrifice pattern is one of the most important in endgame theory — study and memorize it!",
+      },
+    ],
+  },
+  {
+    id: "chess-psychology",
+    title: "Chess Psychology & The Mental Game",
+    description: "Discover how mindset, time management, and psychological warfare shape the outcome of chess games.",
+    category: "Strategy",
+    difficulty: "Advanced",
+    duration: 20,
+    order: 25,
+    content: `# Chess Psychology & The Mental Game
+
+Chess is 90% psychology — or so they say. The truth is more nuanced: chess at its highest level is both precise calculation AND a battle of wills. The strongest players manage their own psychology while exploiting their opponent's weaknesses.
+
+## The Mental Foundations of Chess
+
+### Objectivity
+The greatest mental skill in chess is **objectivity** — evaluating positions honestly, without letting emotions distort your analysis.
+
+> "Every move, ask: what does the position require? Not what do I want to play?" — Karpov
+
+When winning, objectivity prevents overconfidence (playing risky moves unnecessarily).
+When losing, it prevents panic (making desperate moves that accelerate the defeat).
+
+### Concentration
+Chess demands sustained concentration for hours. Top players describe it as one of the most mentally exhausting activities possible.
+
+**Training concentration:**
+1. Analyze every position as if it's life-or-death
+2. Practice with no distractions — no music, no phone
+3. Review games immediately after playing — consolidate the mental picture
+4. Solve 10+ tactics puzzles daily (trains focused, precise thinking)
+
+## Time Management
+
+Clock management is a critical practical skill:
+
+### Use Your Time Wisely
+- **Critical moments** (before major decisions): Use most of your time here
+- **Forced moves** (only one legal move): Play quickly
+- **Theoretical lines** (positions you've studied): Familiar positions need less time
+
+### Never Play in Time Pressure
+Time pressure leads to:
+- Missing opponent's threats
+- Playing the first move that looks OK (not the best)
+- Emotional decisions instead of objective ones
+
+**Avoid time pressure by**: Starting the clock in your mind before your opponent plays their move. Use their time to start thinking!
+
+## Psychological Warfare
+
+Chess history is full of psychological battles beyond the board:
+
+### Bobby Fischer
+Fischer was the undisputed master of psychological warfare. He made demands, arrived late, complained about conditions, cameras, lights — all to disrupt opponents' routines and focus.
+
+> "I prefer to win quickly and brutally rather than to slowly torture my opponent." — Fischer
+
+### Tal's Gaze
+Mikhail Tal was famous for staring at his opponents unblinkingly during their moves — deeply unsettling even to the strongest players.
+
+### Karpov's Silence
+Anatoly Karpov used silence and icy objectivity — he never reacted to dramatic moments, which itself was psychologically disturbing to opponents who expected a reaction.
+
+## Handling Difficult Situations
+
+### When You're Losing
+1. Don't resign prematurely — the hardest positions to defend are often drawn with best play
+2. Look for perpetual check, stalemate, fortress
+3. Create maximum complications — the more complex the position, the more chances for error
+
+### When You're Winning
+1. **Don't relax** — the most common way to lose a won position is to stop calculating
+2. Simplify — trade into a won endgame
+3. Be patient — don't rush, let the win come naturally
+
+### After a Blunder
+1. Stay calm — don't play the next move immediately
+2. Reassess objectively — is the position really lost, or just harder?
+3. Fight on — blunders in practical play are common; many "lost" positions are held
+
+## Kasparov's Secret
+
+Garry Kasparov, perhaps the greatest competitor in chess history, had an extraordinary ability to psychologically dominate opponents. His key insight:
+
+> "I always try to create the maximum amount of problems for my opponent. Even in equal positions, I make moves that create difficulties — that require precise responses. Most players crack under this pressure."
+
+The lesson: **Always play the move that creates the most problems for the opponent**, even in equal positions.`,
+    exercises: [
+      {
+        id: "psy-1",
+        type: "multiple-choice",
+        question: "What is 'objectivity' in chess and why is it important?",
+        options: [
+          "Playing the most complicated moves to confuse the opponent",
+          "Evaluating positions honestly without letting emotions distort your analysis",
+          "Always looking for the most aggressive move",
+          "Playing quickly to avoid time pressure",
+        ],
+        answer: "Evaluating positions honestly without letting emotions distort your analysis",
+        explanation: "Objectivity means seeing the position as it truly is — not as you wish it was. When winning, objectivity prevents recklessness. When losing, it prevents panic. The player who evaluates positions most accurately, regardless of emotional state, tends to play best in practical chess.",
+      },
+      {
+        id: "psy-2",
+        type: "multiple-choice",
+        question: "What should you do when you are in a clearly winning position?",
+        options: [
+          "Relax — the game is already won",
+          "Play wild attacking moves to finish quickly",
+          "Stay alert, keep calculating, and simplify into a won endgame",
+          "Offer a draw to save time",
+        ],
+        answer: "Stay alert, keep calculating, and simplify into a won endgame",
+        explanation: "Winning positions are most often thrown away by relaxing too early. The phrase 'never relax in a won position' is chess wisdom. Keep calculating, find the cleanest win, trade into a technically won endgame, and only stop concentrating when you've delivered the last move.",
+      },
+      {
+        id: "psy-3",
+        type: "multiple-choice",
+        question: "According to Kasparov's philosophy, what should you do even in equal positions?",
+        options: [
+          "Offer a draw immediately",
+          "Make moves that create maximum problems and difficulties for your opponent",
+          "Trade all pieces and accept the draw",
+          "Play the 'safest' move that doesn't risk anything",
+        ],
+        answer: "Make moves that create maximum problems and difficulties for your opponent",
+        explanation: "Kasparov's genius was creating complexity even from equal positions. By always making moves that require precise responses, he put constant psychological pressure on opponents. Most players, under sustained pressure, eventually crack — even without a tactical mistake.",
+      },
+    ],
+  },
+  {
     id: "positional-sacrifices",
     title: "Positional Sacrifices & Long-Term Compensation",
     description: "Discover the art of giving up material for lasting positional advantages — the hallmark of elite strategic chess.",
