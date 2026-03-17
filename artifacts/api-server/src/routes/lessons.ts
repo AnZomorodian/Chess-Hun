@@ -1512,6 +1512,203 @@ In complex king-pawn endgames, each king square "corresponds" to an enemy square
       },
     ],
   },
+  {
+    id: "the-initiative",
+    title: "The Initiative & Tempo",
+    description: "Learn what it means to have the initiative in chess, how to seize it, and how to convert it into a permanent advantage.",
+    category: "Strategy",
+    difficulty: "Advanced",
+    duration: 20,
+    order: 19,
+    content: `# The Initiative & Tempo in Chess
+
+The **initiative** is one of the most important — and most misunderstood — concepts in chess. It's not a material advantage or a positional one: it's the right to dictate the course of the game.
+
+## What Is the Initiative?
+
+The player with the **initiative** is the one making threats. The opponent is forced to react and defend, while the active player chooses their plan.
+
+> "He who attacks must keep attacking." — Tarrasch
+
+When you have the initiative, your moves are **forcing** — your opponent must respond to them. When you lose the initiative, your opponent gets to threaten and you must react.
+
+## What Is Tempo?
+
+A **tempo** is a single move. To "gain a tempo" means to make a useful move while forcing your opponent to waste theirs. To "lose a tempo" is to waste a move.
+
+**Examples of gaining tempos:**
+- Developing a piece while attacking an enemy piece (they must move it)
+- Creating a discovered attack (opponent must respond to two threats at once)
+- Delivering check (opponent must deal with it)
+
+**Examples of losing tempos:**
+- Moving the same piece twice in the opening without reason
+- Making passive, non-threatening moves
+- Retreating pieces that could have been placed correctly the first time
+
+## How to Seize the Initiative
+
+### 1. Play Forcing Moves
+Checks, captures, and threats force your opponent to react. Each forcing move is a gain of initiative.
+
+### 2. Keep Your Opponent on the Back Foot
+After each forcing move, find the next one. Don't give your opponent breathing room to develop their own plan.
+
+### 3. Control Space
+More space = more moves available = easier to create threats. The side with more space naturally tends to have the initiative.
+
+### 4. Open Lines When Ahead in Development
+If you're more developed than your opponent, open the position! Open lines benefit the side whose pieces are more active.
+
+## Converting the Initiative
+
+The initiative is not permanent — it must be converted into something concrete:
+- **Material gain**: Use forcing moves to win a pawn or piece
+- **Positional advantage**: Gain a permanent structural plus (passed pawn, outpost)
+- **Checkmate attack**: Turn the initiative into a direct attack on the king
+
+## Sacrificing for the Initiative
+
+Sometimes it's worth giving up material to seize or maintain the initiative:
+- **Exchange sacrifice** (Rook for Bishop or Knight): Active rook for passive piece position
+- **Pawn sacrifice**: Open a file or diagonal for active pieces
+- **The Immortal Game**: Anderssen sacrificed queen and both rooks for the initiative — and won!
+
+## Losing the Initiative
+
+Watch out for these initiative-killers:
+- **Premature piece exchanges**: Trading pieces often favors the defender
+- **Unnecessary pawn moves**: Each pawn move weakens squares
+- **Passive moves**: Retreating or shuffling pieces gives your opponent time to consolidate`,
+    exercises: [
+      {
+        id: "it-1",
+        type: "multiple-choice",
+        question: "What does it mean to 'have the initiative' in chess?",
+        options: ["Having more material on the board", "Being the player making threats, forcing the opponent to react", "Having the first move in the game", "Controlling the center with pawns"],
+        answer: "Being the player making threats, forcing the opponent to react",
+        explanation: "The initiative means YOU dictate the game — your opponent is reacting to YOUR threats rather than pursuing their own plans. It's about activity and forcing moves, not necessarily material or positional advantage.",
+      },
+      {
+        id: "it-2",
+        type: "multiple-choice",
+        question: "When you are MORE developed than your opponent in the opening, what is the right strategy?",
+        options: ["Play quietly and wait for your opponent to catch up", "Open the position immediately to activate your pieces", "Trade all pieces to simplify", "Push your king's pawn to attack"],
+        answer: "Open the position immediately to activate your pieces",
+        explanation: "A lead in development is temporary — your opponent will catch up if you give them time. Open the position with a pawn break or sacrifice to activate your pieces NOW, before the advantage evaporates. Open lines favor the more developed side!",
+      },
+      {
+        id: "it-3",
+        type: "multiple-choice",
+        question: "What must you ultimately do with the initiative to win the game?",
+        options: ["Keep making threats indefinitely", "Convert it into a concrete advantage: material, positional, or a mating attack", "Trade all pieces into a winning endgame", "Only use it in the opening"],
+        answer: "Convert it into a concrete advantage: material, positional, or a mating attack",
+        explanation: "The initiative is a dynamic, temporary advantage — it must be converted before it evaporates. You either win material, gain a permanent positional plus (passed pawn, weak squares), or launch a decisive attack. An initiative that leads to nothing concrete is wasted.",
+      },
+    ],
+  },
+  {
+    id: "positional-sacrifices",
+    title: "Positional Sacrifices & Long-Term Compensation",
+    description: "Discover the art of giving up material for lasting positional advantages — the hallmark of elite strategic chess.",
+    category: "Strategy",
+    difficulty: "Advanced",
+    duration: 23,
+    order: 20,
+    content: `# Positional Sacrifices in Chess
+
+A **positional sacrifice** is giving up material (a pawn, exchange, or even a piece) not for an immediate tactical refund, but for **long-term positional advantages** that gradually build into a winning edge.
+
+This is among the most advanced and beautiful chess concepts — it separates grandmasters from club players.
+
+## Types of Positional Sacrifices
+
+### The Exchange Sacrifice
+Giving a rook for a bishop or knight in exchange for:
+- A dominant knight on an outpost
+- Open files for the opponent that you can control better
+- Elimination of a key defensive piece
+- A passed pawn that becomes unstoppable
+
+**Example**: Petrosian's exchange sacrifices — he routinely gave up rooks for knights to create unassailable positions.
+
+### The Pawn Sacrifice
+Giving a pawn for:
+- Open files or diagonals for your pieces
+- Eliminating a strong enemy piece (like Nimzo-Indian: ...Bxc3 doubling White's pawns)
+- Seizing a tempo advantage (gambits in the opening)
+- Creating a permanent structural weakness in the opponent's camp
+
+### The Piece Sacrifice
+Giving a knight or bishop for:
+- A devastating attack on the king (Tal-style sacrifices)
+- Three pawns and a mobile pawn mass
+- Permanent initiative that proves sufficient compensation
+
+## Evaluating Compensation
+
+The hardest part of positional sacrifices: **how do you know if the compensation is enough?**
+
+Ask these questions:
+1. **Will my active pieces compensate for the lost material?**
+2. **Is the positional advantage permanent or temporary?**
+3. **Can the opponent consolidate and neutralize my initiative?**
+4. **Will this lead to a better endgame despite being down material?**
+
+## Famous Positional Sacrifices
+
+### Mikhail Tal — The Magician from Riga
+Tal would sacrifice pieces with no immediate refutation, creating positions so complex that even perfect play couldn't find the defense. His 1960 World Championship match vs Botvinnik is full of examples.
+
+### Tigran Petrosian — Exchange Sacrifices
+Petrosian (World Champion 1963–69) was a master of exchange sacrifices. He'd give a rook for a knight whenever it created a dominant, unbreakable position.
+
+### Robert James Fischer
+Fischer's "exchange sacrifice" in the famous game vs Spassky (Game 6, 1972) — Bh6 and Nxe5 — stands as one of the most famous games ever played.
+
+## When to Sacrifice Positionally
+
+The right conditions for a positional sacrifice:
+- **Your pieces will be far more active** after the sacrifice
+- **The opponent's pieces are passive or restricted**
+- **A permanent weakness** (outpost, passed pawn, weak king) is created
+- **The endgame favors you** despite material deficit
+- **Your intuition and calculation agree** — rare, but when they do, trust it
+
+## The "Intangibles"
+
+Some sacrifices are based on intangible factors:
+- **Activity**: Your two bishops and open position vs their rook and restricted pieces
+- **Initiative**: Your attack is so strong that material is irrelevant
+- **Structural**: Passed pawn that queens before they can exploit the extra material
+- **King safety**: Their king is exposed — the sacrifice opens the position at the right moment`,
+    exercises: [
+      {
+        id: "ps-ex-1",
+        type: "multiple-choice",
+        question: "What is an 'exchange sacrifice' in chess?",
+        options: ["Sacrificing the queen for two rooks", "Giving a rook for a bishop or knight in exchange for lasting positional compensation", "Swapping all pieces to reach a drawn endgame", "Offering a pawn in the opening"],
+        answer: "Giving a rook for a bishop or knight in exchange for lasting positional compensation",
+        explanation: "An exchange sacrifice means deliberately giving up a rook (worth ~5 pts) for a bishop or knight (worth ~3 pts) to gain positional advantages — a dominant outpost, active pieces, or structural compensation — that make the material deficit worthwhile in the long run.",
+      },
+      {
+        id: "ps-ex-2",
+        type: "multiple-choice",
+        question: "Which World Champion was famous for exchange sacrifices to create unbreakable positions?",
+        options: ["Garry Kasparov", "Mikhail Tal", "Tigran Petrosian", "Bobby Fischer"],
+        answer: "Tigran Petrosian",
+        explanation: "Petrosian (World Champion 1963–69) was the undisputed master of the exchange sacrifice. He'd give a rook for a knight whenever it created a completely dominant, unassailable position. His style was so positionally profound that his opponents rarely realized they were being ground down.",
+      },
+      {
+        id: "ps-ex-3",
+        type: "multiple-choice",
+        question: "What is the MOST important question to ask before making a positional sacrifice?",
+        options: ["How many points of material am I giving up?", "Will my active pieces and positional advantages outweigh the lost material in the long run?", "Will my opponent be surprised?", "Is there an immediate tactical refutation?"],
+        answer: "Will my active pieces and positional advantages outweigh the lost material in the long run?",
+        explanation: "Material is just a number — what matters is whether your compensation is REAL and LASTING. Concrete compensation: a dominant piece that can never be dislodged, a permanent structural weakness, or a passed pawn. If the positional factors are strong enough, material is irrelevant.",
+      },
+    ],
+  },
 ];
 
 router.get("/", (_req, res) => {

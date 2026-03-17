@@ -460,6 +460,96 @@ const DEFAULT_OPENINGS: Opening[] = [
     ],
     popularity: 50,
   },
+  {
+    id: "kings-gambit",
+    name: "King's Gambit",
+    eco: "C30",
+    description: "One of the oldest and most romantic openings in chess. White sacrifices the f4 pawn to seize the center and open the f-file for attacking play. The King's Gambit was the most popular opening in the 19th century, loved by romantic attackers like Morphy and Anderssen. Still a dangerous weapon at club level.",
+    moves: ["e4", "e5", "f4"],
+    category: "King's Pawn Opening",
+    difficulty: "Intermediate",
+    keyIdeas: [
+      "Sacrifice the f4 pawn to open the f-file and gain central control",
+      "King's Gambit Accepted (2...exf4): White gets attacking play on f-file",
+      "King's Gambit Declined (2...Bc5 or 2...d5): Black refuses the pawn",
+      "The attack on f7 with Bc4 and Nf3 is a classic attacking theme",
+      "Falkbeer Counter-Gambit (2...d5): Black's most combative reply",
+      "Best played with sharp tactical vision — not for the faint-hearted"
+    ],
+    popularity: 62,
+  },
+  {
+    id: "slav-defense",
+    name: "Slav Defense",
+    eco: "D10",
+    description: "A solid and reliable defense to the Queen's Gambit. By playing 1.d4 d5 2.c4 c6, Black reinforces the d5 pawn while keeping options for the c8 bishop — avoiding the French Defense's 'bad bishop' problem. The Slav is a favorite of many World Champions including Kramnik, Anand, and Gelfand.",
+    moves: ["d4", "d5", "c4", "c6"],
+    category: "Queen's Pawn Opening",
+    difficulty: "Intermediate",
+    keyIdeas: [
+      "Reinforce d5 with c6 — keep the c8 bishop free unlike the French Defense",
+      "Semi-Slav (adding ...e6): solid pawn structure, many sharp variations",
+      "Meran Variation: ...Nf6, ...e6, ...dxc4, ...b5 — aggressive expansion",
+      "Moscow Variation (3.Nf3 Bg4): pin the knight, fight for equality",
+      "Exchange Slav: symmetrical pawn structure, White tries for small edge",
+      "Structurally solid — excellent for players who like clean endgames"
+    ],
+    popularity: 74,
+  },
+  {
+    id: "alekhine-defense",
+    name: "Alekhine's Defense",
+    eco: "B02",
+    description: "A provocative hypermodern defense where Black invites White to chase the knight across the board, overextending the pawns. Named after the legendary World Champion Alexander Alekhine, this defense embodies counterattacking chess — Black lures White into a strong center and then undermines it.",
+    moves: ["e4", "Nf6"],
+    category: "King's Pawn Opening",
+    difficulty: "Intermediate",
+    keyIdeas: [
+      "Provoke White's pawns with 1...Nf6 — dare them to chase the knight",
+      "Four Pawns Attack: e5-d4-c4-f4 — White builds a huge center to crush",
+      "Modern Variation: e5-d4-d3 — slower, more positional approach",
+      "Exchange Variation: Nf3-Nxe5 — simplification, slight edge for White",
+      "Black aims to undermine the white center with ...d6, ...c5, ...Nc6",
+      "Rich, complex positions that reward deep opening preparation"
+    ],
+    popularity: 48,
+  },
+  {
+    id: "benoni-defense",
+    name: "Modern Benoni",
+    eco: "A60",
+    description: "One of the most aggressive defenses against 1.d4. Black immediately counter-attacks with c5, accepting a pawn majority imbalance in exchange for dynamic piece play and kingside attacking chances. The Modern Benoni was a favorite of Tal and Fischer, and leads to some of the most exciting chess imaginable.",
+    moves: ["d4", "Nf6", "c4", "c5", "d5", "e6", "Nc3", "exd5", "cxd5"],
+    category: "Indian Defense",
+    difficulty: "Advanced",
+    keyIdeas: [
+      "Accept White's pawn majority (e and d vs d and c) for dynamic play",
+      "The e5 outpost is Black's key strategic goal — control it with ...Re8 and ...Ne5",
+      "Black's plan: ...g6, ...Bg7, kingside attack with ...f5",
+      "White's plan: queenside advance with a4-b4-b5, or f4-f5 attack",
+      "Classical Benoni: ...d6 setup — solid but passive",
+      "Taimanov Attack (f3): White reinforces the center before advancing"
+    ],
+    popularity: 58,
+  },
+  {
+    id: "reti-opening",
+    name: "Réti Opening",
+    eco: "A04",
+    description: "A hypermodern masterpiece from the 1920s, named after Richard Réti. White begins with 1.Nf3 and delays d4 indefinitely, instead building pressure from the flanks via c4 and g3. The Réti can transpose into many different systems — the English Opening, Catalan, King's Indian Attack — making it extremely flexible.",
+    moves: ["Nf3", "d5", "c4"],
+    category: "Flank Opening",
+    difficulty: "Intermediate",
+    keyIdeas: [
+      "Delay d4 and control the center from the flanks — pure hypermodernism",
+      "Réti's famous endgame study shows the king covering two threats at once",
+      "Can transpose into Catalan (g3+Bg2), English, or King's Indian Attack",
+      "Flexible — White chooses the structure after seeing Black's setup",
+      "King's Indian Attack setup (g3-Bg2-O-O-d3-Nbd2) is a solid system",
+      "White aims to pressure d5 from the sides rather than meeting it head-on"
+    ],
+    popularity: 61,
+  },
 ];
 
 function getOpeningsDb(): Opening[] {

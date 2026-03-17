@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "framer-motion";
-import { Crown, Loader2 } from "lucide-react";
+import { Crown, Loader2, Eye, EyeOff } from "lucide-react";
 import { useRegister } from "@/hooks/use-auth";
 import { useToast } from "@/hooks/use-toast";
 
@@ -21,6 +21,7 @@ export default function Register() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
   const registerMutation = useRegister();
+  const [showPassword, setShowPassword] = useState(false);
 
   const form = useForm<RegisterForm>({
     resolver: zodResolver(registerSchema),
@@ -102,12 +103,22 @@ export default function Register() {
 
           <div className="space-y-1">
             <label className="text-sm font-medium text-foreground ml-1">Password *</label>
-            <input
-              type="password"
-              {...form.register("password")}
-              className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-muted-foreground/50"
-              placeholder="••••••••"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                {...form.register("password")}
+                className="w-full px-4 py-3 pr-11 rounded-xl bg-secondary/50 border border-border focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-muted-foreground/50"
+                placeholder="••••••••"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground transition-colors"
+                tabIndex={-1}
+              >
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
+            </div>
             {form.formState.errors.password && (
               <p className="text-destructive text-xs mt-1 ml-1">{form.formState.errors.password.message}</p>
             )}

@@ -91,6 +91,50 @@ export function useRegister() {
   });
 }
 
+export function useUpdateProfile() {
+  return useMutation({
+    mutationFn: async (data: {
+      displayName?: string;
+      bio?: string;
+      country?: string;
+      favoriteOpening?: string;
+      preferredSide?: "White" | "Black" | "Both";
+      avatarColor?: string;
+    }) => {
+      const res = await fetch('/api/auth/profile', {
+        method: 'PATCH',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.error || 'Failed to update profile');
+      }
+      return res.json() as Promise<{ user: UserProfile }>;
+    },
+    onSuccess: (data) => {
+      queryClient.setQueryData(['/api/auth/me'], data.user);
+    },
+  });
+}
+
+export function useChangePassword() {
+  return useMutation({
+    mutationFn: async (data: { currentPassword: string; newPassword: string }) => {
+      const res = await fetch('/api/auth/password', {
+        method: 'PATCH',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.error || 'Failed to change password');
+      }
+      return res.json() as Promise<{ success: boolean; message: string }>;
+    },
+  });
+}
+
 export function useUser() {
   const token = useAuthStore((state) => state.token);
 

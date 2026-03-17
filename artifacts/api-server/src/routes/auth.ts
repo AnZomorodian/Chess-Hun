@@ -15,6 +15,11 @@ interface UserRecord {
   lessonsCompleted: number;
   openingsStudied: number;
   joinedAt: string;
+  bio?: string;
+  country?: string;
+  favoriteOpening?: string;
+  preferredSide?: "White" | "Black" | "Both";
+  avatarColor?: string;
 }
 
 interface UsersDb {
@@ -40,6 +45,11 @@ function toProfile(u: UserRecord) {
     lessonsCompleted: u.lessonsCompleted,
     openingsStudied: u.openingsStudied,
     joinedAt: u.joinedAt,
+    bio: u.bio ?? "",
+    country: u.country ?? "",
+    favoriteOpening: u.favoriteOpening ?? "",
+    preferredSide: u.preferredSide ?? "Both",
+    avatarColor: u.avatarColor ?? "gold",
   };
 }
 
@@ -111,25 +121,77 @@ router.post("/login", (req, res) => {
 
 router.get("/me", (req, res) => {
   const token = extractToken(req.headers.authorization);
-  if (!token) {
-    res.status(401).json({ error: "No token provided" });
+  if (!token) { res.status(401).json({ error: "No token provided" }); return; }
+  const userId = verifyToken(token);
+  if (!userId) { res.status(401).json({ error: "Invalid or expired token" }); return; }
+  const db = getUsers();
+  const user = db.users.find((u) => u.id === userId);
+  if (!user) { res.status(401).json({ error: "User not found" }); return; }
+  res.json(toProfile(user));
+});
+
+router.patch("/profile", (req, res) => {
+  const token = extractToken(req.headers.authorization);
+  if (!token) { res.status(401).json({ error: "No token provided" }); return; }
+  const userId = verifyToken(token);
+  if (!userId) { res.status(401).json({ error: "Invalid or expired token" }); return; }
+
+  const { displayName, bio, country, favoriteOpening, preferredSide, avatarColor } = req.body as {
+    displayName?: string;
+    bio?: string;
+    country?: string;
+    favoriteOpening?: string;
+    preferredSide?: "White" | "Black" | "Both";
+    avatarColor?: string;
+  };
+
+  const db = getUsers();
+  const user = db.users.find((u) => u.id === userId);
+  if (!user) { res.status(404).json({ error: "User not found" }); return; }
+
+  if (displayName !== undefined) user.displayName = displayName.trim() || user.username;
+  if (bio !== undefined) user.bio = bio.slice(0, 300);
+  if (country !== undefined) user.country = country;
+  if (favoriteOpening !== undefined) user.favoriteOpening = favoriteOpening;
+  if (preferredSide !== undefined) user.preferredSide = preferredSide;
+  if (avatarColor !== undefined) user.avatarColor = avatarColor;
+
+  saveUsers(db);
+  res.json({ user: toProfile(user) });
+});
+
+router.patch("/password", (req, res) => {
+  const token = extractToken(req.headers.authorization);
+  if (!token) { res.status(401).json({ error: "No token provided" }); return; }
+  const userId = verifyToken(token);
+  if (!userId) { res.status(401).json({ error: "Invalid or expired token" }); return; }
+
+  const { currentPassword, newPassword } = req.body as {
+    currentPassword?: string;
+    newPassword?: string;
+  };
+
+  if (!currentPassword || !newPassword) {
+    res.status(400).json({ error: "currentPassword and newPassword are required" });
     return;
   }
-
-  const userId = verifyToken(token);
-  if (!userId) {
-    res.status(401).json({ error: "Invalid or expired token" });
+  if (newPassword.length < 6) {
+    res.status(400).json({ error: "New password must be at least 6 characters" });
     return;
   }
 
   const db = getUsers();
   const user = db.users.find((u) => u.id === userId);
-  if (!user) {
-    res.status(401).json({ error: "User not found" });
+  if (!user) { res.status(404).json({ error: "User not found" }); return; }
+
+  if (user.passwordHash !== hashPassword(currentPassword)) {
+    res.status(401).json({ error: "Current password is incorrect" });
     return;
   }
 
-  res.json(toProfile(user));
+  user.passwordHash = hashPassword(newPassword);
+  saveUsers(db);
+  res.json({ success: true, message: "Password updated successfully" });
 });
 
 export default router;
