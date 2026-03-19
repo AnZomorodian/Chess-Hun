@@ -1,4 +1,4 @@
-# Chess Academy
+# Chess Academy — Chess Learning Platform
 
 ## Overview
 

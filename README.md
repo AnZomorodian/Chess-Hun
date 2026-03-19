@@ -1,8 +1,7 @@
 # ♟ Chess Academy
 
-A full-stack interactive chess learning platform — beautifully designed, deeply educational, and completely self-hosted with no external database required.
+A full-stack, self-hosted chess learning platform — beautifully designed, deeply educational, and completely self-hosted with no external database required.
 
-![Chess Academy](https://img.shields.io/badge/Chess-Academy-gold?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2ZmZCIgZD0iTTEyIDJMOCA4SDRsMiA0LTIgMWg0bDEgM0g5bC0xIDJoOGwtMS0ySDEzbDEtM2g0bC0yLTEgMi00aC00eiIvPjwvc3ZnPg==)
 ![Node.js](https://img.shields.io/badge/Node.js-20%2B-green?style=for-the-badge&logo=node.js)
 ![React](https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)
@@ -10,227 +9,176 @@ A full-stack interactive chess learning platform — beautifully designed, deepl
 
 ---
 
-## ✨ Features
+## Features
 
-### 🎓 Structured Learning
-- **20+ Masterclasses** covering Beginner → Advanced topics
-- Full lesson content with rich Markdown rendering (headings, tables, code)
-- Interactive **multiple-choice exercises** after each lesson
-- **Lesson completion system** with XP points, celebration screen, and "Up Next" progression
+### Structured Learning
+- **30 Masterclasses** — from absolute beginner fundamentals to grandmaster-level concepts
+- 5 **Elite Lessons** locked behind **2000+ ELO** — real advanced content reserved for serious players
+- Rich **Markdown lesson content** with tables, code blocks, and headers
+- **Interactive multiple-choice exercises** after every lesson with detailed explanations
+- **Lesson completion system** with XP rewards, celebration screen, and "Up Next" progression
 
-### ♟ Openings Library
-- **20+ Chess Openings** with ECO codes, key ideas, and move sequences
-- **Sicilian Defense** with 5 dedicated variants: Najdorf, Dragon, Scheveningen, Kan, Accelerated Dragon
-- Sorted by **Beginner → Intermediate → Advanced** with filter buttons
-- Search by name, ECO code, or category
+### Openings Library (42 Openings)
+- Full openings database with **ECO codes**, **key ideas**, **move sequences**, and **difficulty tiers**
+- Beginner classics (Italian, French, Caro-Kann, London), Intermediate (Ruy López, Scotch, Vienna, KIA), and Advanced (Sveshnikov, Benko, Pirc, Grünfeld)
+- Filter by difficulty or search by name/ECO code
+- Interactive move display with chess notation
 
-### 👤 User System
-- Register / Log In with secure token-based authentication
-- **Profile page** with avatar, ELO rating, level, and stats
-- **8 Achievements** that unlock as you learn
-- Progress tracking: lessons completed, openings studied, points, streaks
+### Tactical Traps (19 Traps)
+- Famous traps with full explanations: Fried Liver, Budapest Gambit, Noah's Ark, Scholar's Mate, and more
+- Detailed move-by-move breakdown with counter-play explanation
 
-### 📊 Dashboard
-- Overall course completion progress bar
-- Stats: total points, daily streak, lessons done, openings studied
-- Recent activity feed
+### Progression System
+- **ELO Rating** — grows with lesson completions
+- **XP Points** — 50 / 80 / 120 XP by difficulty (Beginner / Intermediate / Advanced)
+- **Daily Streaks** — keep your learning streak alive
+- **5 Levels** — Beginner → Intermediate → Advanced → Expert → Master
+- **20 Achievements** — lesson milestones, streaks, XP goals, ELO targets
 
-### 🎨 Design
-- Stunning dark chess-themed UI with gold accents
-- Smooth Framer Motion animations throughout
-- Fully responsive — works on mobile, tablet, and desktop
-- Glass-panel aesthetic with premium hover effects
+### User Features
+- Secure **registration and login** with HMAC-signed tokens
+- **Profile page** with avatar, bio, country, preferred side, favorite opening
+- **XP Breakdown** — see XP earned by difficulty and total study time
+- **Chess Platform Links** — link accounts from Chess.com, Lichess, ChessKid, Chess24, Chess Tempo, ChessBase, ICC, Playchess, FIDE
+- **Display name cooldown** — can be changed once every 3 days
+- **Leaderboard privacy** — hide yourself from the public rankings
+- **Public Profiles** — shareable player pages at `/users/:id`
+
+### Community
+- **Global Leaderboard** — ranked by ELO with platform account links visible
+- **Public Profile Pages** — view any player's level, rating, openings studied, and linked accounts
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
 | Frontend | React 18 + TypeScript + Vite |
-| Styling | Tailwind CSS v4 + shadcn/ui |
+| Styling | Tailwind CSS + shadcn/ui |
 | Animations | Framer Motion |
-| State | Zustand + TanStack Query |
+| State | Zustand + TanStack React Query |
+| Routing | Wouter |
+| Chess Logic | chess.js |
+| Markdown | react-markdown + remark-gfm |
 | Backend | Express 5 + TypeScript |
 | Auth | Custom HMAC token (no JWT library) |
-| Database | Local JSON files (no server needed!) |
-| Chess Logic | chess.js |
+| Database | Local JSON files (zero dependencies) |
 | Monorepo | pnpm workspaces |
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
-### Requirements
-- Node.js 20+
-- pnpm (`npm install -g pnpm`)
-
-### Run in 3 steps
+**Requirements**: Node.js 20+, pnpm
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/your-username/chess-academy.git
-cd chess-academy
-
-# 2. Install dependencies
+# Install dependencies
 pnpm install
 
-# 3. Start both servers
-pnpm --filter @workspace/api-server run dev    # API on :8080
-pnpm --filter @workspace/chess-academy run dev  # Frontend on :5173
+# Start API server (port 8080) and frontend (port 19953) together
+PORT=8080 pnpm --filter @workspace/api-server run dev &
+PORT=19953 BASE_PATH=/ pnpm --filter @workspace/chess-academy run dev
 ```
 
-Open **http://localhost:5173** in your browser.
-
-> **First time?** Register an account — user data is saved automatically to `artifacts/api-server/data/`.
+Open **http://localhost:19953** in your browser. Register an account — data is saved automatically to `artifacts/api-server/data/`.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-chess-academy/
+/
 ├── artifacts/
-│   ├── api-server/          # Express 5 backend
+│   ├── api-server/              # Express 5 backend
 │   │   ├── src/
 │   │   │   ├── routes/
-│   │   │   │   ├── auth.ts      # Login, register, /me
-│   │   │   │   ├── lessons.ts   # All lesson data + endpoints
-│   │   │   │   ├── openings.ts  # All openings data + endpoints
-│   │   │   │   └── progress.ts  # User progress tracking
-│   │   │   ├── lib/
-│   │   │   │   ├── auth.ts      # HMAC token + password hashing
-│   │   │   │   └── jsonDb.ts    # File-based JSON storage
-│   │   │   └── index.ts
+│   │   │   │   ├── auth.ts       # Login, register, profile
+│   │   │   │   ├── lessons.ts    # All 30 lesson definitions + endpoints
+│   │   │   │   ├── openings.ts   # Opening data endpoints
+│   │   │   │   ├── traps.ts      # Trap data (19 traps)
+│   │   │   │   ├── progress.ts   # User progress tracking
+│   │   │   │   ├── leaderboard.ts
+│   │   │   │   └── users.ts      # Public profile API
+│   │   │   └── lib/
+│   │   │       ├── auth.ts       # HMAC token + password hashing
+│   │   │       └── jsonDb.ts     # File-based JSON storage
 │   │   └── data/
-│   │       ├── DATABASEUSER.JSON  # User accounts
-│   │       └── DATABASE.JSON      # Openings + progress
+│   │       ├── DATABASE.JSON      # Openings + progress records
+│   │       └── DATABASEUSER.JSON  # User accounts
 │   │
-│   └── chess-academy/       # React + Vite frontend
+│   └── chess-academy/           # React + Vite frontend
 │       └── src/
-│           ├── pages/
-│           │   ├── home.tsx
-│           │   ├── lessons.tsx
-│           │   ├── lesson-detail.tsx
-│           │   ├── openings.tsx
-│           │   ├── opening-detail.tsx
-│           │   ├── dashboard.tsx
-│           │   ├── profile.tsx
-│           │   ├── login.tsx
-│           │   └── register.tsx
-│           ├── hooks/
-│           │   ├── use-auth.ts     # Auth state + mutations
-│           │   └── use-chess.ts    # Lessons, openings, progress
-│           └── components/
-│               └── layout/
-│                   └── Navbar.tsx
+│           ├── pages/            # All page components
+│           ├── components/       # Navbar, layout, UI
+│           └── hooks/            # use-auth.ts, use-chess.ts
 │
-├── shared/                  # Shared TypeScript types
-│   └── src/schema.ts
-├── HOW_TO_RUN.md            # Docker + VPS + domain guide
-└── README.md                # This file
+└── shared/                      # Shared TypeScript types
 ```
 
 ---
 
-## 🗄 Data Storage
+## API Reference
 
-All data is stored in plain **JSON files** — no PostgreSQL, no MongoDB, no Redis required.
-
-| File | What it stores |
-|------|---------------|
-| `DATABASEUSER.JSON` | User accounts (username, hashed password, rating, level) |
-| `DATABASE.JSON` | Chess openings library + per-user progress records |
-
-This makes it trivially easy to:
-- **Back up** your data: just copy two files
-- **Self-host** anywhere: a $5/month VPS is plenty
-- **Inspect** your data: open in any text editor
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/api/lessons` | No | All 30 lessons |
+| GET | `/api/lessons/:id` | No | Single lesson |
+| GET | `/api/openings` | No | All openings |
+| GET | `/api/openings/:id` | No | Single opening |
+| GET | `/api/traps` | No | All 19 traps |
+| POST | `/api/auth/register` | No | Register |
+| POST | `/api/auth/login` | No | Log in |
+| GET | `/api/auth/me` | Yes | Current user |
+| PATCH | `/api/auth/profile` | Yes | Update profile |
+| POST | `/api/auth/change-password` | Yes | Change password |
+| GET | `/api/progress` | Yes | User progress |
+| POST | `/api/progress/lesson` | Yes | Complete a lesson |
+| POST | `/api/progress/opening` | Yes | Study an opening |
+| GET | `/api/leaderboard` | No | Top players by ELO |
+| GET | `/api/users/:id` | No | Public user profile |
 
 ---
 
-## 🔐 Authentication
+## Elite Lessons (2000+ ELO)
+
+Five advanced masterclasses unlock when your rating reaches 2000:
+
+| # | Title | Duration |
+|---|-------|----------|
+| 26 | How Grandmasters Think | 35 min |
+| 27 | Deep Endgame Theory | 40 min |
+| 28 | Advanced Attack Theory | 38 min |
+| 29 | Opening Preparation in the Computer Era | 30 min |
+| 30 | World Champion Techniques | 45 min |
+
+---
+
+## Authentication
 
 - Passwords hashed with **SHA-256 + salt** (no plaintext ever stored)
-- Auth tokens are **HMAC-signed** custom tokens (no JWT library dependency)
+- Auth tokens are **HMAC-signed** (no JWT library needed)
 - Token stored in `localStorage` as `chess_academy_token`
-- `/api/auth/me` validates the token on every protected request
 
 ---
 
-## 📚 Lessons (20+)
+## Data Storage
 
-| # | Title | Category | Difficulty |
-|---|-------|----------|-----------|
-| 1 | Understanding Piece Values | Fundamentals | Beginner |
-| 2 | Basic Tactics: Forks, Pins & Skewers | Tactics | Beginner |
-| 3 | King Safety & Castling | Strategy | Beginner |
-| 4 | Pawn Structure Fundamentals | Strategy | Intermediate |
-| 5 | Checkmate Patterns | Tactics | Intermediate |
-| 6 | Endgame Basics | Endgame | Beginner |
-| 7 | Opening Principles | Opening Theory | Beginner |
-| 8 | Advanced Tactical Motifs | Tactics | Intermediate |
-| 9 | Strategic Planning | Strategy | Intermediate |
-| 10 | Rook Endgames Mastery | Endgame | Advanced |
-| 11 | The Art of the Attack | Tactics | Advanced |
-| 12 | Chess Psychology | Strategy | Intermediate |
-| 13 | The Bishop Pair Advantage | Strategy | Intermediate |
-| 14 | Calculation & Visualization | Tactics | Intermediate |
-| 15 | Pawn Breaks & Structural Warfare | Strategy | Intermediate |
-| 16 | Knight Maneuvers & Outposts | Strategy | Advanced |
-| 17 | The Art of Defense | Strategy | Advanced |
-| 18 | Queen & Pawn Endgames | Endgame | Advanced |
+All data is stored as plain **JSON files** — no PostgreSQL, MongoDB, or Redis needed.
+
+| File | Contents |
+|------|----------|
+| `DATABASE.JSON` | Openings + per-user progress records |
+| `DATABASEUSER.JSON` | User accounts, passwords, profile settings |
+
+Back up your data by copying two files. Self-host anywhere with just Node.js.
 
 ---
 
-## ♟ Openings Library (20+)
+## Credits
 
-**Beginner**: Italian Game, Queen's Gambit, French Defense, Caro-Kann, London System, King's Pawn
-
-**Intermediate**: Ruy López, Scotch Game, English Opening, Nimzo-Indian, Sicilian (Open)
-
-**Advanced**: Sicilian Najdorf, Sicilian Dragon, Sicilian Scheveningen, Sicilian Kan, Accelerated Dragon, King's Indian, Dutch Defense, Grünfeld Defense, Queen's Indian, Pirc Defense, Vienna Game
+Designed & developed by **Artin Zomorodian**
 
 ---
 
-## 🌐 Deploying
-
-See **[HOW_TO_RUN.md](./HOW_TO_RUN.md)** for complete guides on:
-
-- Local development
-- Docker containerization
-- Docker Compose (recommended for VPS)
-- Deploying to a VPS (Ubuntu/Debian)
-- Setting up a custom domain with HTTPS (Let's Encrypt)
-- Automated backups and updates
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Some ideas:
-
-- Add more chess openings with interactive board demos
-- Add a puzzle mode with real chess positions
-- Add multiplayer or match-play features
-- Add an AI opponent using Stockfish.js
-- Add a PGN game viewer
-
-```bash
-# Fork the repo, then:
-git checkout -b feature/your-feature
-# Make your changes
-git commit -m "feat: add your feature"
-git push origin feature/your-feature
-# Open a Pull Request
-```
-
----
-
-## 📄 License
-
-MIT License — free to use, modify, and distribute.
-
----
-
-*Built with ❤️ for chess lovers everywhere. "Chess is the art of analysis." — Mikhail Botvinnik*
+*"Chess is the art of analysis." — Mikhail Botvinnik*

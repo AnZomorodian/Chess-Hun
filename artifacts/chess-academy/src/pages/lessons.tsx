@@ -2,7 +2,7 @@ import { useLessons, useProgress } from "@/hooks/use-chess";
 import { useUser } from "@/hooks/use-auth";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, PlayCircle, CheckCircle2, ChevronRight, Loader2, BookOpen, Filter, Trophy, Star } from "lucide-react";
+import { Clock, PlayCircle, CheckCircle2, ChevronRight, Loader2, BookOpen, Filter, Trophy, Star, Lock } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -18,7 +18,7 @@ const XP_MAP: Record<string, number> = {
   Advanced: 120,
 };
 
-type FilterType = "All" | "Beginner" | "Intermediate" | "Advanced" | "Completed" | "In Progress";
+type FilterType = "All" | "Beginner" | "Intermediate" | "Advanced" | "Completed" | "In Progress" | "Locked";
 
 export default function Lessons() {
   const { data: lessons, isLoading } = useLessons();
@@ -28,18 +28,23 @@ export default function Lessons() {
 
   const completedIds = new Set(progress?.completedLessons ?? []);
   const sorted = lessons ? [...lessons].sort((a, b) => a.order - b.order) : [];
-  const nextLesson = sorted.find((l) => !completedIds.has(l.id));
+  const nextLesson = sorted.find((l) => !completedIds.has(l.id) && !(l as any).minElo);
+
+  const userRating = user?.rating ?? 0;
+
+  const isLocked = (lesson: any) => !!lesson.minElo && userRating < lesson.minElo;
 
   const filtered = sorted.filter((l) => {
     if (activeFilter === "All") return true;
+    if (activeFilter === "Locked") return isLocked(l);
     if (activeFilter === "Completed") return completedIds.has(l.id);
-    if (activeFilter === "In Progress") return !completedIds.has(l.id);
+    if (activeFilter === "In Progress") return !completedIds.has(l.id) && !isLocked(l);
     return l.difficulty === activeFilter;
   });
 
   const categories = [...new Set(sorted.map((l) => l.category))];
   const totalXP = sorted.filter((l) => completedIds.has(l.id)).reduce((sum, l) => sum + (XP_MAP[l.difficulty] ?? 50), 0);
-  const filters: FilterType[] = ["All", "Beginner", "Intermediate", "Advanced", "Completed", "In Progress"];
+  const filters: FilterType[] = ["All", "Beginner", "Intermediate", "Advanced", "Completed", "In Progress", "Locked"];
 
   const groupedByCategory = categories.map((cat) => ({
     category: cat,
@@ -68,7 +73,7 @@ export default function Lessons() {
             {[
               { icon: Trophy, label: "Completed", value: `${completedIds.size}/${sorted.length}`, color: "text-primary" },
               { icon: Star, label: "Total XP", value: totalXP, color: "text-accent" },
-              { icon: BookOpen, label: "Remaining", value: sorted.length - completedIds.size, color: "text-blue-400" },
+              { icon: BookOpen, label: "Remaining", value: sorted.filter(l => !completedIds.has(l.id) && !isLocked(l)).length, color: "text-blue-400" },
               { icon: Clock, label: "Total Time", value: `${sorted.reduce((s, l) => s + l.duration, 0)}m`, color: "text-purple-400" },
             ].map((stat) => (
               <div key={stat.label} className="glass-panel rounded-2xl p-4 border border-border/50">
@@ -97,6 +102,22 @@ export default function Lessons() {
             </div>
           </div>
         )}
+
+        {/* Elite banner */}
+        {userRating < 2000 && sorted.some(l => isLocked(l)) && (
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
+            className="mt-5 flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 to-yellow-500/5 border border-amber-500/20">
+            <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center shrink-0">
+              <Lock className="w-5 h-5 text-amber-400" />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-amber-400">Elite Lessons Locked</p>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                {sorted.filter(l => isLocked(l)).length} advanced masterclasses unlock at <span className="text-amber-400 font-semibold">2000+ ELO</span>. Your current rating: <span className="font-semibold text-foreground">{userRating}</span>
+              </p>
+            </div>
+          </motion.div>
+        )}
       </motion.div>
 
       {/* Filters */}
@@ -105,17 +126,21 @@ export default function Lessons() {
         <Filter className="w-4 h-4 text-muted-foreground shrink-0" />
         {filters.map((f) => {
           const count = f === "All" ? sorted.length
+            : f === "Locked" ? sorted.filter(l => isLocked(l)).length
             : f === "Completed" ? completedIds.size
-            : f === "In Progress" ? sorted.length - completedIds.size
+            : f === "In Progress" ? sorted.filter(l => !completedIds.has(l.id) && !isLocked(l)).length
             : sorted.filter((l) => l.difficulty === f).length;
           return (
             <button key={f} onClick={() => setActiveFilter(f)}
               className={cn(
-                "px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all",
+                "px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all flex items-center gap-1.5",
                 activeFilter === f
-                  ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
+                  ? f === "Locked"
+                    ? "bg-amber-500 text-white border-amber-500 shadow-md shadow-amber-500/20"
+                    : "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
                   : "bg-secondary/50 text-muted-foreground border-border hover:border-primary/30 hover:text-foreground"
               )}>
+              {f === "Locked" && <Lock className="w-3 h-3" />}
               {f} {count > 0 && <span className={activeFilter === f ? "opacity-70" : "opacity-50"}>({count})</span>}
             </button>
           );
@@ -149,70 +174,86 @@ export default function Lessons() {
                 {/* Lesson Cards */}
                 <div className="space-y-3">
                   {group.lessons.map((lesson, i) => {
+                    const locked = isLocked(lesson);
                     const isCompleted = completedIds.has(lesson.id);
                     const isNext = lesson.id === nextLesson?.id;
                     const xp = XP_MAP[lesson.difficulty] ?? 50;
                     const diffStyle = DIFFICULTY_STYLE[lesson.difficulty as keyof typeof DIFFICULTY_STYLE];
+                    const minElo = (lesson as any).minElo;
+
+                    const card = (
+                      <div className={cn(
+                        "relative flex items-center gap-4 p-5 rounded-2xl border transition-all group",
+                        locked
+                          ? "border-amber-500/20 bg-amber-500/5 cursor-not-allowed opacity-80"
+                          : isCompleted
+                          ? "border-green-500/20 bg-green-500/5 hover:border-green-500/40 cursor-pointer"
+                          : isNext
+                          ? "border-primary/40 bg-primary/5 hover:border-primary/70 ring-1 ring-primary/15 cursor-pointer"
+                          : "border-border bg-card/60 hover:border-primary/30 hover:bg-card/80 cursor-pointer"
+                      )}>
+                        {/* Status Badge */}
+                        <div className={cn(
+                          "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border-2 font-bold text-base transition-all",
+                          locked ? "border-amber-500/40 bg-amber-500/10 text-amber-400"
+                            : isCompleted ? "border-green-500 bg-green-500/15 text-green-500"
+                            : isNext ? "border-primary bg-primary/15 text-primary"
+                            : "border-border bg-secondary text-muted-foreground group-hover:border-primary/40"
+                        )}>
+                          {locked ? <Lock className="w-5 h-5" /> : isCompleted ? <CheckCircle2 className="w-6 h-6" /> : lesson.order}
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-center gap-2 mb-1">
+                            <span className={cn("text-xs font-bold px-2 py-0.5 rounded-full border flex items-center gap-1", diffStyle?.cls)}>
+                              <span className={cn("inline-block w-1.5 h-1.5 rounded-full", diffStyle?.dot)} />
+                              {lesson.difficulty}
+                            </span>
+                            {locked && (
+                              <span className="text-xs font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                <Lock className="w-2.5 h-2.5" /> {minElo}+ ELO Required
+                              </span>
+                            )}
+                            {!locked && isNext && !isCompleted && (
+                              <span className="text-xs font-bold bg-primary/15 text-primary border border-primary/30 px-2 py-0.5 rounded-full">▶ Up Next</span>
+                            )}
+                            {!locked && isCompleted && (
+                              <span className="text-xs font-bold bg-green-500/10 text-green-500 border border-green-500/20 px-2 py-0.5 rounded-full">✓ Done</span>
+                            )}
+                          </div>
+                          <h2 className={cn("text-base font-bold truncate transition-colors",
+                            locked ? "text-amber-400/70"
+                            : isCompleted ? "text-foreground/70"
+                            : "text-foreground group-hover:text-primary")}>
+                            {lesson.title}
+                          </h2>
+                          <p className="text-xs text-muted-foreground line-clamp-1 mt-0.5">{lesson.description}</p>
+                        </div>
+
+                        {/* Right side */}
+                        <div className="shrink-0 flex flex-col items-end gap-2">
+                          <div className="flex items-center text-muted-foreground text-xs">
+                            <Clock className="w-3.5 h-3.5 mr-1" />{lesson.duration} min
+                          </div>
+                          <div className={cn("text-xs font-bold", locked ? "text-amber-400/60" : "text-accent")}>+{xp} XP</div>
+                          {!locked && (
+                            <div className={cn(
+                              "flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-lg transition-colors",
+                              isCompleted ? "bg-green-500/10 text-green-500" : "bg-secondary text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground"
+                            )}>
+                              {isCompleted ? <><CheckCircle2 className="w-3.5 h-3.5" /> Review</> : <><PlayCircle className="w-3.5 h-3.5" /> Start</>}
+                            </div>
+                          )}
+                        </div>
+
+                        {!locked && <ChevronRight className="w-4 h-4 text-muted-foreground/40 group-hover:text-primary transition-colors shrink-0" />}
+                      </div>
+                    );
 
                     return (
                       <motion.div key={lesson.id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: gi * 0.08 + i * 0.04 }}>
-                        <Link href={`/lessons/${lesson.id}`}>
-                          <div className={cn(
-                            "relative flex items-center gap-4 p-5 rounded-2xl border transition-all cursor-pointer group",
-                            isCompleted
-                              ? "border-green-500/20 bg-green-500/5 hover:border-green-500/40"
-                              : isNext
-                              ? "border-primary/40 bg-primary/5 hover:border-primary/70 ring-1 ring-primary/15"
-                              : "border-border bg-card/60 hover:border-primary/30 hover:bg-card/80"
-                          )}>
-                            {/* Status Badge */}
-                            <div className={cn(
-                              "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border-2 font-bold text-base transition-all",
-                              isCompleted ? "border-green-500 bg-green-500/15 text-green-500"
-                                : isNext ? "border-primary bg-primary/15 text-primary"
-                                : "border-border bg-secondary text-muted-foreground group-hover:border-primary/40"
-                            )}>
-                              {isCompleted ? <CheckCircle2 className="w-6 h-6" /> : lesson.order}
-                            </div>
-
-                            {/* Content */}
-                            <div className="flex-1 min-w-0">
-                              <div className="flex flex-wrap items-center gap-2 mb-1">
-                                <span className={cn("text-xs font-bold px-2 py-0.5 rounded-full border flex items-center gap-1", diffStyle?.cls)}>
-                                  <span className={cn("inline-block w-1.5 h-1.5 rounded-full", diffStyle?.dot)} />
-                                  {lesson.difficulty}
-                                </span>
-                                {isNext && !isCompleted && (
-                                  <span className="text-xs font-bold bg-primary/15 text-primary border border-primary/30 px-2 py-0.5 rounded-full">▶ Up Next</span>
-                                )}
-                                {isCompleted && (
-                                  <span className="text-xs font-bold bg-green-500/10 text-green-500 border border-green-500/20 px-2 py-0.5 rounded-full">✓ Done</span>
-                                )}
-                              </div>
-                              <h2 className={cn("text-base font-bold truncate transition-colors",
-                                isCompleted ? "text-foreground/70" : "text-foreground group-hover:text-primary")}>
-                                {lesson.title}
-                              </h2>
-                              <p className="text-xs text-muted-foreground line-clamp-1 mt-0.5">{lesson.description}</p>
-                            </div>
-
-                            {/* Right side */}
-                            <div className="shrink-0 flex flex-col items-end gap-2">
-                              <div className="flex items-center text-muted-foreground text-xs">
-                                <Clock className="w-3.5 h-3.5 mr-1" />{lesson.duration} min
-                              </div>
-                              <div className="text-xs font-bold text-accent">+{xp} XP</div>
-                              <div className={cn(
-                                "flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-lg transition-colors",
-                                isCompleted ? "bg-green-500/10 text-green-500" : "bg-secondary text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground"
-                              )}>
-                                {isCompleted ? <><CheckCircle2 className="w-3.5 h-3.5" /> Review</> : <><PlayCircle className="w-3.5 h-3.5" /> Start</>}
-                              </div>
-                            </div>
-
-                            <ChevronRight className="w-4 h-4 text-muted-foreground/40 group-hover:text-primary transition-colors shrink-0" />
-                          </div>
-                        </Link>
+                        {locked ? card : <Link href={`/lessons/${lesson.id}`}>{card}</Link>}
                       </motion.div>
                     );
                   })}

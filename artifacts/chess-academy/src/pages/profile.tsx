@@ -156,16 +156,26 @@ export default function Profile() {
   };
 
   const achievements = [
-    { icon: "♟", label: "First Step", desc: "Complete 1 lesson", unlocked: completedLessons.length >= 1 },
+    { icon: "♟", label: "First Move", desc: "Complete your first lesson", unlocked: completedLessons.length >= 1 },
     { icon: "🎯", label: "On a Roll", desc: "Complete 3 lessons", unlocked: completedLessons.length >= 3 },
-    { icon: "📖", label: "Scholar", desc: "Study 3 openings", unlocked: completedOpenings.length >= 3 },
-    { icon: "🔥", label: "Streak Master", desc: "3-day streak", unlocked: (progress?.streak ?? 0) >= 3 },
-    { icon: "⭐", label: "Point Collector", desc: "Earn 200 XP", unlocked: totalXP >= 200 },
-    { icon: "👑", label: "Halfway There", desc: "50% lessons done", unlocked: completionPct >= 50 },
-    { icon: "🏆", label: "Champion", desc: "All lessons done", unlocked: completionPct >= 100 },
     { icon: "🧠", label: "Tactician", desc: "Complete 5 lessons", unlocked: completedLessons.length >= 5 },
-    { icon: "♜", label: "Trap Expert", desc: "ELO over 1000", unlocked: user.rating >= 1000 },
-    { icon: "🌟", label: "Grandmaster", desc: "10 openings studied", unlocked: completedOpenings.length >= 10 },
+    { icon: "📚", label: "Bookworm", desc: "Complete 10 lessons", unlocked: completedLessons.length >= 10 },
+    { icon: "🎓", label: "Dedicated", desc: "Complete 15 lessons", unlocked: completedLessons.length >= 15 },
+    { icon: "📖", label: "Opening Fan", desc: "Study 3 openings", unlocked: completedOpenings.length >= 3 },
+    { icon: "🌟", label: "Theory Buff", desc: "Study 10 openings", unlocked: completedOpenings.length >= 10 },
+    { icon: "♛", label: "Opening Master", desc: "Study 20 openings", unlocked: completedOpenings.length >= 20 },
+    { icon: "🔥", label: "Streak Starter", desc: "3-day learning streak", unlocked: (progress?.streak ?? 0) >= 3 },
+    { icon: "⚡", label: "Streak Master", desc: "7-day streak", unlocked: (progress?.streak ?? 0) >= 7 },
+    { icon: "💫", label: "Inferno", desc: "14-day streak", unlocked: (progress?.streak ?? 0) >= 14 },
+    { icon: "⭐", label: "Point Starter", desc: "Earn 200 XP", unlocked: totalXP >= 200 },
+    { icon: "💎", label: "XP Hunter", desc: "Earn 500 XP", unlocked: totalXP >= 500 },
+    { icon: "🏅", label: "Point Hoarder", desc: "Earn 1000 XP", unlocked: totalXP >= 1000 },
+    { icon: "👑", label: "Halfway There", desc: "50% of all lessons done", unlocked: completionPct >= 50 },
+    { icon: "🏆", label: "Champion", desc: "Complete all lessons", unlocked: completionPct >= 100 },
+    { icon: "📈", label: "Rated Player", desc: "Reach 1000 ELO", unlocked: user.rating >= 1000 },
+    { icon: "♜", label: "Strong Player", desc: "Reach 1200 ELO", unlocked: user.rating >= 1200 },
+    { icon: "🥊", label: "Expert", desc: "Reach 1500 ELO", unlocked: user.rating >= 1500 },
+    { icon: "🎖️", label: "Master", desc: "Reach 2000 ELO", unlocked: user.rating >= 2000 },
   ];
 
   const tabs: { id: Tab; label: string; icon: typeof User }[] = [
@@ -366,6 +376,30 @@ export default function Profile() {
               </div>
             </div>
 
+            {/* XP Breakdown */}
+            <div className="glass-panel rounded-2xl border border-border/50 p-6">
+              <h2 className="text-base font-bold mb-4 flex items-center gap-2">
+                <TrendingUp className="w-5 h-5 text-primary" /> XP Breakdown
+                <span className="ml-auto text-2xl font-bold text-primary">{totalXP} XP</span>
+              </h2>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {[
+                  { label: "Beginner", color: "text-emerald-400", bg: "bg-emerald-400/10 border-emerald-400/20", xp: completedLessons.filter(l => l.difficulty === "Beginner").length * 50 },
+                  { label: "Intermediate", color: "text-yellow-400", bg: "bg-yellow-400/10 border-yellow-400/20", xp: completedLessons.filter(l => l.difficulty === "Intermediate").length * 80 },
+                  { label: "Advanced", color: "text-red-400", bg: "bg-red-400/10 border-red-400/20", xp: completedLessons.filter(l => l.difficulty === "Advanced").length * 120 },
+                  { label: "Study Time", color: "text-purple-400", bg: "bg-purple-400/10 border-purple-400/20", xp: completedLessons.reduce((s, l) => s + l.duration, 0), unit: "min" },
+                ].map((item) => (
+                  <div key={item.label} className={`p-3 rounded-xl border ${item.bg} text-center`}>
+                    <div className={`text-xl font-bold ${item.color}`}>{item.xp}{item.unit ?? " XP"}</div>
+                    <div className="text-xs text-muted-foreground mt-0.5">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+              {completedLessons.length === 0 && (
+                <p className="text-center text-sm text-muted-foreground mt-3">Complete lessons to start earning XP!</p>
+              )}
+            </div>
+
             {/* Chess Platform Accounts */}
             {((user as any).chessAccounts?.length ?? 0) > 0 && (
               <div className="glass-panel rounded-2xl border border-border/50 p-6">
@@ -378,6 +412,11 @@ export default function Profile() {
                       "Chess.com": `https://www.chess.com/member/${acc.username}`,
                       "Lichess": `https://lichess.org/@/${acc.username}`,
                       "ChessKid": `https://www.chesskid.com/member/${acc.username}`,
+                      "Chess24": `https://chess24.com/en/profile/${acc.username}`,
+                      "Chess Tempo": `https://chesstempo.com/chess-players/${acc.username}`,
+                      "ChessBase": `https://en.chessbase.com/search?q=${acc.username}`,
+                      "ICC": `https://www.chessclub.com/user/profile/${acc.username}`,
+                      "Playchess": `https://play.chessbase.com/`,
                       "FIDE": `https://ratings.fide.com/search.phtml?search=${acc.username}`,
                     };
                     const url = platformUrls[acc.platform];
@@ -385,15 +424,20 @@ export default function Profile() {
                       "Chess.com": "bg-green-500/10 border-green-500/20 text-green-400",
                       "Lichess": "bg-blue-500/10 border-blue-500/20 text-blue-400",
                       "ChessKid": "bg-yellow-500/10 border-yellow-500/20 text-yellow-400",
+                      "Chess24": "bg-sky-500/10 border-sky-500/20 text-sky-400",
+                      "Chess Tempo": "bg-violet-500/10 border-violet-500/20 text-violet-400",
+                      "ChessBase": "bg-red-500/10 border-red-500/20 text-red-400",
+                      "ICC": "bg-indigo-500/10 border-indigo-500/20 text-indigo-400",
+                      "Playchess": "bg-rose-500/10 border-rose-500/20 text-rose-400",
                       "FIDE": "bg-orange-500/10 border-orange-500/20 text-orange-400",
                     };
                     const colorClass = platformColors[acc.platform] || "bg-secondary/40 border-border text-muted-foreground";
                     return (
-                      <a key={i} href={url} target="_blank" rel="noopener noreferrer"
-                        className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all hover:scale-105 ${colorClass}`}>
+                      <a key={i} href={url || "#"} target="_blank" rel="noopener noreferrer"
+                        className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl border font-medium text-sm transition-all hover:scale-105 cursor-pointer ${colorClass}`}>
                         <span className="font-bold text-xs opacity-70">{acc.platform}</span>
                         <span className="font-mono">{acc.username}</span>
-                        <ExternalLink className="w-3 h-3 opacity-60" />
+                        {url && <ExternalLink className="w-3 h-3 opacity-60" />}
                       </a>
                     );
                   })}
@@ -407,13 +451,13 @@ export default function Profile() {
                 <Award className="w-5 h-5 text-primary" /> Achievements
                 <span className="ml-auto text-sm text-muted-foreground font-normal">{achievements.filter(a => a.unlocked).length}/{achievements.length} unlocked</span>
               </h2>
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+              <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2.5">
                 {achievements.map((ach) => (
                   <motion.div key={ach.label} whileHover={ach.unlocked ? { scale: 1.04 } : {}}
-                    className={`p-4 rounded-2xl border text-center transition-all ${ach.unlocked ? "border-primary/30 bg-primary/5" : "border-border bg-secondary/20 opacity-40 grayscale"}`}>
-                    <div className="text-3xl mb-2">{ach.icon}</div>
+                    className={`p-3 sm:p-4 rounded-2xl border text-center transition-all ${ach.unlocked ? "border-primary/30 bg-primary/5 shadow-sm shadow-primary/10" : "border-border bg-secondary/20 opacity-35 grayscale"}`}>
+                    <div className="text-2xl sm:text-3xl mb-1.5">{ach.icon}</div>
                     <div className={`font-bold text-xs mb-0.5 ${ach.unlocked ? "text-foreground" : "text-muted-foreground"}`}>{ach.label}</div>
-                    <div className="text-xs text-muted-foreground leading-tight">{ach.desc}</div>
+                    <div className="text-xs text-muted-foreground leading-tight hidden sm:block">{ach.desc}</div>
                   </motion.div>
                 ))}
               </div>
@@ -528,7 +572,7 @@ export default function Profile() {
                   <div key={i} className="flex gap-2 items-center">
                     <select value={acc.platform} onChange={(e) => updateChessAccount(i, "platform", e.target.value)}
                       className="px-3 py-2.5 rounded-xl bg-secondary/40 border border-border focus:outline-none focus:border-primary text-sm appearance-none cursor-pointer shrink-0 w-36">
-                      {["Chess.com", "Lichess", "ChessKid", "FIDE"].map((p) => <option key={p} value={p}>{p}</option>)}
+                      {["Chess.com", "Lichess", "ChessKid", "Chess24", "Chess Tempo", "ChessBase", "ICC", "Playchess", "FIDE", "Other"].map((p) => <option key={p} value={p}>{p}</option>)}
                     </select>
                     <input value={acc.username} onChange={(e) => updateChessAccount(i, "username", e.target.value)}
                       className="flex-1 px-4 py-2.5 rounded-xl bg-secondary/40 border border-border focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all text-sm"

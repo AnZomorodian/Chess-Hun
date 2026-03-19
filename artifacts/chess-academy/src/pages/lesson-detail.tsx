@@ -1,7 +1,7 @@
 import { useLesson, useUpdateProgress, useLessons } from "@/hooks/use-chess";
 import { useUser } from "@/hooks/use-auth";
 import { useParams, Link, useLocation } from "wouter";
-import { ArrowLeft, CheckCircle2, ChevronRight, Loader2, XCircle, Trophy, ArrowRight } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ChevronRight, Loader2, XCircle, Trophy, ArrowRight, Lock } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import ReactMarkdown from "react-markdown";
@@ -36,6 +36,34 @@ export default function LessonDetail() {
         Lesson not found.
       </div>
     );
+
+  // ELO gate
+  const minElo = (lesson as any).minElo;
+  const userRating = user?.rating ?? 0;
+  if (minElo && userRating < minElo) {
+    return (
+      <div className="max-w-2xl mx-auto px-4 py-24 text-center">
+        <div className="w-20 h-20 rounded-3xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto mb-6">
+          <Lock className="w-10 h-10 text-amber-400" />
+        </div>
+        <h1 className="text-3xl font-display font-bold mb-3 text-amber-400">Elite Lesson Locked</h1>
+        <p className="text-muted-foreground mb-2 text-lg">
+          <span className="font-semibold text-foreground">{lesson.title}</span> requires a rating of{" "}
+          <span className="text-amber-400 font-bold">{minElo}+ ELO</span> to access.
+        </p>
+        <p className="text-sm text-muted-foreground mb-8">
+          Your current rating: <span className="font-bold text-foreground">{userRating}</span> — keep playing and studying to unlock this masterclass!
+        </p>
+        <div className="flex items-center justify-center gap-3">
+          <Link href="/lessons">
+            <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity">
+              <ArrowLeft className="w-4 h-4" /> Back to Lessons
+            </button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   // Find the next lesson in order
   const sortedLessons = lessons ? [...lessons].sort((a, b) => a.order - b.order) : [];

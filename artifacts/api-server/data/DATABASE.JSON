@@ -4,7 +4,7 @@
       "id": "ruy-lopez",
       "name": "Ruy López (Spanish Opening)",
       "eco": "C60",
-      "description": "One of the oldest and most classic of all chess openings. White attacks Black's e5 pawn by pinning the knight that defends it. The Ruy López has been played at the highest levels for centuries and remains one of the most popular openings today.",
+      "description": "One of the oldest and most respected openings in chess, played at every level from club player to World Championship. White's third move Bb5 pressures the Nc6 which defends Black's e5 pawn — the threat is to capture on c6 and then win the e5 pawn. Black has many ways to respond, creating rich and complex positions. The main line involves 3...a6 (Morphy Defense), forcing the bishop to decide whether to take or retreat to a4. The Ruy López is a lifetime opening — you can spend a career studying its subtleties.",
       "moves": [
         "e4",
         "e5",
@@ -15,10 +15,14 @@
       "category": "King's Pawn Opening",
       "difficulty": "Intermediate",
       "keyIdeas": [
-        "Pin the Nc6 to put pressure on e5",
-        "Control the center with pawns on e4 and d4",
-        "Develop pieces actively",
-        "Castle kingside for safety"
+        "Pin the Nc6 to indirectly pressure the e5 pawn — White threatens Bxc6 followed by Nxe5",
+        "After 3...a6 4.Ba4 Nf6 5.O-O Be7 6.Re1 b5 7.Bb3 d6 8.c3 — the main 'Open Ruy López' setup",
+        "White's long-term plan: achieve the d4 break to fight for the center and open the game",
+        "Castle early and build pressure with Re1, then push d4 at the right moment",
+        "The Marshall Attack (5...O-O 6.Re1 b5 7.Bb3 O-O 8.c3 d5!?) is Black's sharpest counter-gambit",
+        "Closed variations (without ...Nxe4) lead to slow strategic maneuvering with c3 and d4",
+        "White's bishop on b3 is a long-term powerhouse targeting f7 and the kingside",
+        "Beware of the Noah's Ark Trap: if Black plays ...b5 and ...c5 at the right moment, White's bishop can be trapped"
       ],
       "popularity": 95
     },
@@ -26,7 +30,7 @@
       "id": "sicilian-defense",
       "name": "Sicilian Defense",
       "eco": "B20",
-      "description": "The most popular chess opening by a wide margin. Black immediately fights for the center with c5, creating an asymmetrical position with rich counterplay possibilities. The Sicilian leads to sharp, complex games that reward both tactical and strategic understanding.",
+      "description": "The world's most popular chess opening by a massive margin. By playing 1...c5, Black refuses to give White a free classical center and instead creates an asymmetrical position. The Sicilian scores better for Black than any other response to 1.e4, and it has been the weapon of choice for attacking players like Fischer, Tal, Kasparov, and Magnus Carlsen. White typically launches a fierce kingside attack while Black counterattacks on the queenside — the result is explosive, tactical chess that rewards preparation and creativity. It branches into dozens of major variations: Najdorf, Dragon, Scheveningen, Classical, Kan, Sveshnikov, and more.",
       "moves": [
         "e4",
         "c5"
@@ -34,10 +38,14 @@
       "category": "King's Pawn Opening",
       "difficulty": "Intermediate",
       "keyIdeas": [
-        "Fight for the d4 square without letting White have a classical center",
-        "Counterattack on the queenside",
-        "Rich tactical complications",
-        "Asymmetrical pawn structures lead to unbalanced positions"
+        "Fight for the d4 square without letting White have a classical two-pawn center",
+        "The Open Sicilian (2.Nf3 followed by 3.d4) leads to the most complex and studied positions in chess",
+        "Black gets a half-open c-file after ...cxd4 — use it to counterattack with ...Rc8 and ...Qc7",
+        "White's kingside attack often involves f4-f5, g4-g5 advances — Black must strike back fast on the queenside",
+        "The d5 pawn break is a key thematic idea for Black in many Sicilian structures",
+        "In the Najdorf (...a6), Black stops Nb5 and prepares ...e5 or ...b5 queenside expansion",
+        "In the Dragon (...g6 + ...Bg7), Black's bishop dominates the long diagonal — White plays Bc4, h4-h5 to attack",
+        "Anti-Sicilians (Alapin 2.c3, Grand Prix 2.Nc3 f4, Smith-Morra gambit 2.d4 cxd4 3.c3) avoid the Open Sicilian"
       ],
       "popularity": 99
     },
@@ -45,7 +53,7 @@
       "id": "queens-gambit",
       "name": "Queen's Gambit",
       "eco": "D06",
-      "description": "A classical opening where White offers a pawn sacrifice to gain central control. The Queen's Gambit is one of the oldest recorded openings and is still extremely popular at all levels. It leads to solid strategic battles.",
+      "description": "A timeless classical opening that has been played for over 500 years. White offers the c4 pawn to lure Black's d5 pawn away from the center. If Black takes (Queen's Gambit Accepted), White gains a strong central presence. If Black declines (Queen's Gambit Declined with ...e6), the game becomes a strategic battle over the center and piece activity. The Queen's Gambit experienced a massive popularity revival after the Netflix series 'The Queen's Gambit' and remains one of the most respected ways to open as White. It leads to rich, strategic positions that reward positional understanding.",
       "moves": [
         "d4",
         "d5",
@@ -54,10 +62,14 @@
       "category": "Queen's Pawn Opening",
       "difficulty": "Beginner",
       "keyIdeas": [
-        "Offer the c4 pawn to gain control of the center",
-        "Develop pieces to active squares",
-        "Open the position for your bishops",
-        "Control key central squares d4 and e4"
+        "Offer the c4 pawn as a gambit — if Black takes with dxc4, White regains it with e3 or e4 and gets a strong center",
+        "In the QGD (...e6), Black defends d5 but locks in the c8-bishop — a classical strategic problem for Black",
+        "White develops with Nc3, Nf3, and Bf4 or Bg5 — a harmonious setup with natural piece development",
+        "The minority attack: push b4-b5 to undermine Black's c6 pawn and create queenside weaknesses",
+        "After castling, White often targets the half-open e-file and plays Nf3-e5 to dominate the center",
+        "In the QGA (...dxc4 2.e4), White gets a classical pawn center — Black must break it quickly with ...c5 or ...e5",
+        "The Exchange Variation (cxd5 exd5) leads to the Carlsbad structure with a minority attack for White",
+        "Key defensive idea for Black: ...c5 break to free the position and equalize"
       ],
       "popularity": 92
     },
@@ -90,7 +102,7 @@
       "id": "french-defense",
       "name": "French Defense",
       "eco": "C00",
-      "description": "A solid and reliable defense for Black. By playing e6, Black prepares to challenge White's center with d5. The French creates closed, strategic positions where piece maneuvering is essential. It's particularly popular among players who prefer strategic over tactical play.",
+      "description": "A solid and battle-tested defense that immediately creates a pawn chain and solid structure. After 1.e4 e6 2.d4 d5, Black challenges the center and commits to a specific strategic plan. The French is known for its reliability — Black's position is hard to break down and often improves with time. The famous trade-off: Black's c8-bishop is often locked behind its own pawns (the 'bad bishop'), but this is compensated by a clear plan and queenside counterplay. Many great players including Viktor Korchnoi, Tigran Petrosian, and Mikhail Botvinnik were devoted French players.",
       "moves": [
         "e4",
         "e6",
@@ -100,10 +112,14 @@
       "category": "King's Pawn Opening",
       "difficulty": "Beginner",
       "keyIdeas": [
-        "Challenge White's e4 pawn with d5",
-        "Build a solid pawn structure",
-        "Play on the queenside with c5 breaks",
-        "Activate the light-squared bishop"
+        "Build a solid pawn chain with e6+d5 to challenge White's center on the first few moves",
+        "The c8-bishop is often locked — solve this with ...Bd7, exchanging it, or fianchettoing via ...b6 and ...Bb7",
+        "The ...c5 break is Black's primary counterattack — time it carefully to strike at White's d4 pawn",
+        "In the Winawer Variation (3.Nc3 Bb4), Black pins the knight and creates sharp tactical imbalances",
+        "In the Classical Variation (3.Nc3 Nf6 4.Bg5), Black plays ...Be7 and ...O-O for a solid setup",
+        "The Tarrasch Variation (3.Nd2) is White's solid approach — Black responds with ...c5 immediately",
+        "In the Advance Variation (3.e5), Black should play ...c5 and ...Nc6 to attack White's advanced pawn chain",
+        "Endgame tip: Black's solid pawn structure often shines in the endgame where the 'bad bishop' can be activated"
       ],
       "popularity": 78
     },
@@ -111,7 +127,7 @@
       "id": "caro-kann",
       "name": "Caro-Kann Defense",
       "eco": "B10",
-      "description": "The Caro-Kann is one of Black's most solid responses to 1.e4. By playing c6, Black prepares to challenge White's center with d5 while keeping the queen's bishop active. It's known for its solid, reliable positions.",
+      "description": "The Caro-Kann is one of chess's most resilient and theoretically sound defenses. Unlike the French Defense, Black's c8-bishop is NOT locked behind the pawn chain — it becomes actively developed after ...dxe4 and ...Bf5 or ...Bg4. The Caro-Kann has been a lifelong weapon for World Champions Mikhail Botvinnik, Anatoly Karpov, and Magnus Carlsen. It is particularly famous for leading to healthy endgames where Black's solid structure becomes a lasting asset. While White scores slightly better on the kingside, the Caro-Kann gives Black excellent defensive resources and counterplay potential.",
       "moves": [
         "e4",
         "c6",
@@ -121,10 +137,14 @@
       "category": "King's Pawn Opening",
       "difficulty": "Beginner",
       "keyIdeas": [
-        "Solid pawn structure without weaknesses",
-        "Active queen's bishop (compared to French)",
-        "Counterplay with c5 breaks",
-        "Endgame advantages due to solid structure"
+        "Unlike the French, Black's c8-bishop stays ACTIVE — develop it to f5 or g4 after ...dxe4",
+        "In the Classical Variation (3.Nc3 dxe4 4.Nxe4 Bf5), Black gets a very comfortable position with the bishop outside",
+        "In the Advance Variation (3.e5), Black plays ...Bf5 and ...e6 — don't be rushed, the position is solid",
+        "In the Panov-Botvinnik Attack (3.exd5 cxd5 4.c4), isolated pawn positions arise — White attacks, Black defends and counterattacks",
+        "The ...Nd7-Nf6 development is key — Black shouldn't rush the c8-bishop out before the center is resolved",
+        "Endgame strategy: Black's solid pawn structure makes it hard for White to create passed pawns — aim for endgames",
+        "The Fantasy Variation (3.f3!?) is sharp and aggressive — Black must respond accurately with ...dxe4",
+        "Famous players like Karpov showed how the Caro-Kann can be used to win positional masterpieces"
       ],
       "popularity": 72
     },
@@ -132,7 +152,7 @@
       "id": "italian-game",
       "name": "Italian Game",
       "eco": "C50",
-      "description": "One of the oldest openings in chess history. White aims to control the center quickly with pawns and develop pieces to aggressive squares. The Italian Game leads to rich tactical positions that are great for beginners to learn chess principles.",
+      "description": "One of the oldest and most instructive openings in chess history, recorded as far back as the 16th century. White places the bishop on c4 — aimed directly at the sensitive f7 pawn — and develops harmoniously with Nc3, Nf3, and d3 or d4. The Italian has seen a massive revival at elite level in the 2010s and 2020s, with Magnus Carlsen, Fabiano Caruana, and virtually every top player adopting it. The modern Italian features slow maneuvering with d3, slow preparation of d4, and a deep positional battle. It is ideal for beginners because the principles (control center, develop, castle) are demonstrated perfectly.",
       "moves": [
         "e4",
         "e5",
@@ -143,10 +163,14 @@
       "category": "King's Pawn Opening",
       "difficulty": "Beginner",
       "keyIdeas": [
-        "Control the center with e4 and d4",
-        "Develop knights before bishops",
-        "Aim at the f7 weakness with Bc4",
-        "Castle early for king safety"
+        "Place Bc4 to target the f7 square — the weakest point near Black's king before castling",
+        "The Giuoco Piano (3...Bc5) leads to the classical main line — White plays d3 or the aggressive d4",
+        "The Two Knights Defense (3...Nf6) gives Black counterplay — White can play 4.Ng5 for the Fried Liver Attack!",
+        "Modern Italian setup: d3 + O-O + Re1, then prepare c3 and d4 — a slow but powerful squeeze",
+        "The Evan's Gambit (3...Bc5 4.b4!) is a classic gambit that sacrifices a pawn for rapid development",
+        "After the center is stabilized, White's plan is to push d4 and open the game for the bishops",
+        "Black's solid response: ...d6 or ...d5 immediately to fight back in the center",
+        "The Italian endgames often favor the player with better-placed pieces — don't trade your good bishop!"
       ],
       "popularity": 88
     },
@@ -234,31 +258,6 @@
         "Avoids extensive theory — ideal for club players"
       ],
       "popularity": 80
-    },
-    {
-      "id": "scotch-game",
-      "name": "Scotch Game",
-      "eco": "C44",
-      "description": "The Scotch Game is an aggressive opening popularized by Garry Kasparov at the world championship level. White immediately strikes at the center with d4, creating open lines and piece activity. It's sharper than the Italian or Ruy López and leads to exciting complications.",
-      "moves": [
-        "e4",
-        "e5",
-        "Nf3",
-        "Nc6",
-        "d4",
-        "exd4",
-        "Nxd4"
-      ],
-      "category": "King's Pawn Opening",
-      "difficulty": "Intermediate",
-      "keyIdeas": [
-        "Strike the center early with d4",
-        "Open lines for active piece play",
-        "The Nd4 becomes a strong central piece",
-        "White aims for fast development and initiative",
-        "Sharp, unbalanced positions with good winning chances"
-      ],
-      "popularity": 76
     },
     {
       "id": "kings-pawn-open",
@@ -472,53 +471,6 @@
       "popularity": 72
     },
     {
-      "id": "vienna-game",
-      "name": "Vienna Game",
-      "eco": "C25",
-      "description": "A classical and somewhat underestimated opening where White develops the queen's knight to c3 before Nf3. The Vienna Game is rich with tactical possibilities — the Vienna Gambit (f4) leads to sharp attacking play, while quieter lines transpose to solid Italian or Bishop's Opening structures.",
-      "moves": [
-        "e4",
-        "e5",
-        "Nc3"
-      ],
-      "category": "King's Pawn Opening",
-      "difficulty": "Intermediate",
-      "keyIdeas": [
-        "Develop Nc3 to support e4 and prepare f4 or Nf3",
-        "Vienna Gambit (f4): aggressive play aiming for f5 pawn storms",
-        "Quiet Vienna (Bc4): transpose to Classical Italian setups",
-        "King's Gambit connection: 2.Nc3 avoids many King's Gambit refutations",
-        "Black's best: ...Nf6 and ...Nc6 with active piece play",
-        "Steinitz Gambit (4.g3): unusual but rich with tactical ideas"
-      ],
-      "popularity": 55
-    },
-    {
-      "id": "pirc-defense",
-      "name": "Pirc Defense",
-      "eco": "B07",
-      "description": "A hypermodern defense where Black invites White to build a big center, then attacks it from the sides. Named after Yugoslav grandmaster Vasja Pirc, it's characterized by ...d6, ...Nf6, and a kingside fianchetto (g6, Bg7). The Pirc is rich, flexible, and full of dynamic potential.",
-      "moves": [
-        "e4",
-        "d6",
-        "d4",
-        "Nf6",
-        "Nc3",
-        "g6"
-      ],
-      "category": "King's Pawn Opening",
-      "difficulty": "Advanced",
-      "keyIdeas": [
-        "Invite White to build a center with d4-e4, then undermine it",
-        "Fianchetto Bg7 for pressure along the long diagonal",
-        "Austrian Attack (f4-f5): White's most aggressive reply",
-        "Classical System (Be2-Nf3): solid, positional squeeze",
-        "Black's plan: ...c5 or ...e5 to challenge White's center",
-        "Flexible — can become King's Indian-like structures"
-      ],
-      "popularity": 58
-    },
-    {
       "id": "trompowsky-attack",
       "name": "Trompowsky Attack",
       "eco": "A45",
@@ -565,31 +517,6 @@
         "Deep positional play — not for tactical slugfests"
       ],
       "popularity": 74
-    },
-    {
-      "id": "benko-gambit",
-      "name": "Benko Gambit",
-      "eco": "A57",
-      "description": "One of the most ambitious gambits in all of chess. Black sacrifices a pawn on b5 (and sometimes c5) to gain long-term queenside pressure and open files for the rooks. The compensation is positional rather than tactical — Black gets the a and b files and a permanent initiative that lasts into the endgame.",
-      "moves": [
-        "d4",
-        "Nf6",
-        "c4",
-        "c5",
-        "d5",
-        "b5"
-      ],
-      "category": "Queen's Pawn Opening",
-      "difficulty": "Advanced",
-      "keyIdeas": [
-        "Sacrifice the b5 pawn for open a and b files (long-term initiative)",
-        "The compensation is positional, not tactical — files and diagonals",
-        "Black's Bg7 aims down the long diagonal toward White's queenside",
-        "Rooks operate on the open a and b files after ...axb5 cxb5",
-        "White often accepts (cxb5) or declines (various systems)",
-        "Initiative lasts well into the endgame — not just a quick attack"
-      ],
-      "popularity": 50
     },
     {
       "id": "kings-gambit",
@@ -814,33 +741,6 @@
       "popularity": 70
     },
     {
-      "id": "kings-indian-attack",
-      "name": "King's Indian Attack",
-      "eco": "A07",
-      "description": "A reversed King's Indian Defense — White plays as Black would in the KID (Nf3, g3, Bg2, O-O, d3, Nbd2) regardless of Black's setup. Popularized by Bobby Fischer, the KIA is a complete system that avoids extensive opening theory. It leads to rich middlegames where White typically launches a kingside attack with e5 and f4.",
-      "moves": [
-        "Nf3",
-        "d5",
-        "g3",
-        "c5",
-        "Bg2",
-        "Nc6",
-        "O-O",
-        "e5"
-      ],
-      "category": "Flank Opening",
-      "difficulty": "Intermediate",
-      "keyIdeas": [
-        "System opening: play Nf3-g3-Bg2-O-O-d3-Nbd2 regardless of Black's moves",
-        "The Bg2 fianchetto puts long-term pressure on Black's queenside and center",
-        "Kingside attack plan: e5, Nf1-g3-h5, then f4 with attacking chances",
-        "Fischer used it successfully against the French and Sicilian setups",
-        "Black's best: ...d4 pawn push to claim space, then ...f5 counterplay",
-        "Excellent for players who want to learn one system against multiple defenses"
-      ],
-      "popularity": 58
-    },
-    {
       "id": "nimzowitsch-defense",
       "name": "Nimzowitsch Defense",
       "eco": "B00",
@@ -860,6 +760,196 @@
         "Fits the hypermodern philosophy: observe White's center then attack it"
       ],
       "popularity": 28
+    },
+    {
+      "id": "vienna-game",
+      "name": "Vienna Game",
+      "eco": "C25",
+      "description": "The Vienna Game begins with 1.e4 e5 2.Nc3 — White develops the knight to c3 instead of the more common 2.Nf3. This flexible approach avoids the Petrov Defense (2...Nf6) and allows White to later play f4 for an aggressive Vienna Gambit (2...Nc6 3.f4), or transpose into classical positions. The Vienna is a tricky opening that catches many unprepared players. At the club level, it is particularly effective because Black's natural responses can lead into dangerous positions. Magnus Carlsen and other elite players have used it to surprise opponents.",
+      "moves": [
+        "e4",
+        "e5",
+        "Nc3"
+      ],
+      "category": "King's Pawn Opening",
+      "difficulty": "Intermediate",
+      "keyIdeas": [
+        "Develop Nc3 first to control d5 and prepare f4 (Vienna Gambit) or Nf3 (transposition)",
+        "The Vienna Gambit (3.f4!) sacrifices a pawn to open the f-file and attack Black's king",
+        "After 2...Nc6 3.Bc4, White can enter the Vienna with Bishop — similar to Italian Game ideas",
+        "3.g3 followed by Bg2 gives White a solid setup with the fianchettoed bishop on the a8-h1 diagonal",
+        "Avoid 2.Nc3 Nf6 3.f4 d5! — this is Black's best countering the Vienna Gambit with the Falkbeer Counter",
+        "The 'Frankenstein-Dracula Variation' (2...Nf6 3.Bc4 Nxe4) leads to wild tactical complications",
+        "White's main plan: control the center, castle, and launch a kingside attack or maintain solid advantage"
+      ],
+      "popularity": 52
+    },
+    {
+      "id": "benko-gambit",
+      "name": "Benko Gambit",
+      "eco": "A57",
+      "description": "The Benko Gambit (or Volga Gambit) is one of Black's most ambitious responses to 1.d4 Nf6 2.c4 c5 3.d5. Rather than accepting White's space advantage, Black immediately sacrifices a pawn with 3...b5!? — offering the queenside pawn in exchange for long-lasting queenside pressure and piece activity. Unlike most gambits where the compensation is temporary, the Benko Gambit offers Black enduring pressure along the open a and b files. It was popularized by Pal Benko and has been used by World Champions and elite grandmasters. Black accepts an inferior pawn structure to gain dynamic compensation that often lasts into the endgame.",
+      "moves": [
+        "d4",
+        "Nf6",
+        "c4",
+        "c5",
+        "d5",
+        "b5"
+      ],
+      "category": "Indian Defense",
+      "difficulty": "Advanced",
+      "keyIdeas": [
+        "Sacrifice the b5 pawn to open the a and b files for lasting queenside pressure",
+        "After ...bxc4 and ...g6 + ...Bg7, Black's fianchettoed bishop becomes a monster on the a8-h1 diagonal",
+        "Black's key plan: ...Nbd7-b6, ...Ba6, and doubling rooks on the a and b files",
+        "White must be careful — accepting the gambit (4.cxb5 a6 5.bxa6 Bxa6) gives Black massive activity for just one pawn",
+        "White can decline with 4.Nf3 or 4.Nd2 — the Fully Accepted line is the critical test",
+        "Black's long-term compensation comes from permanent queenside file control, not tactical tricks",
+        "The endgame is often favorable for Black despite the pawn deficit — activity and the b7 bishop compensate"
+      ],
+      "popularity": 45
+    },
+    {
+      "id": "sicilian-sveshnikov",
+      "name": "Sicilian Sveshnikov",
+      "eco": "B33",
+      "description": "The Sicilian Sveshnikov (or Lasker-Pelikan Variation) is one of the most principled and theoretically rich variations of the Sicilian Defense. After 1.e4 c5 2.Nf3 Nc6 3.d4 cxd4 4.Nxd4 Nf6 5.Nc3 e5!?, Black immediately counterattacks in the center by pushing e5 — a move that looks risky but is deeply sound. White's knight is pushed back to b3, and Black accepts a backward d6 pawn and weak d5 square in exchange for powerful central control and active piece play. Popularized by Evgeny Sveshnikov and used by Magnus Carlsen, Vladimir Kramnik, and many modern elites. This opening demands precise knowledge from both sides.",
+      "moves": [
+        "e4",
+        "c5",
+        "Nf3",
+        "Nc6",
+        "d4",
+        "cxd4",
+        "Nxd4",
+        "Nf6",
+        "Nc3",
+        "e5"
+      ],
+      "category": "King's Pawn Opening",
+      "difficulty": "Advanced",
+      "keyIdeas": [
+        "Push 5...e5! to counterattack the center and force White's knight to b3 — Black accepts a backward d6 pawn",
+        "White's key response: 6.Ndb5 d6 7.Bg5 a6 8.Na3 b5 — the main line with queenside expansion",
+        "Black's plan: ...Be7, castle, then push ...d5 to free the position (the key Sveshnikov break)",
+        "White aims to plant a knight on d5 — the dominant outpost created by Black's pawn structure",
+        "The f5-f4 kingside expansion is an important idea for White — Black must time ...Bg4 or ...Be6 to stop it",
+        "The 'Novosibirsk Variation' (9.Nd5) is an aggressive attempt — Black must know the theory to survive",
+        "Long-term: Black's active pieces and queenside play compensate for the structural weaknesses",
+        "Understanding the Sicilian endgames is crucial — the backward d-pawn can be a weakness or a fortress"
+      ],
+      "popularity": 72
+    },
+    {
+      "id": "pirc-defense",
+      "name": "Pirc Defense",
+      "eco": "B07",
+      "description": "The Pirc Defense is a hypermodern approach where Black allows White to build a large pawn center (e4 + d4) and then systematically attacks it from the sides. After 1.e4 d6 2.d4 Nf6 3.Nc3 g6, Black fianchettoes the bishop to g7 — creating a powerful defender along the long diagonal. While the Pirc looks passive, it is actually a highly dynamic defense that leads to unbalanced positions. It was a favorite of Viktor Korchnoi and is used by many modern grandmasters. White has several aggressive responses (Austrian Attack with f4, Classical System with Be3, and the 150 Attack with Be3 + Qd2 + Bh6) — Black must be ready for all of them.",
+      "moves": [
+        "e4",
+        "d6",
+        "d4",
+        "Nf6",
+        "Nc3",
+        "g6"
+      ],
+      "category": "King's Pawn Opening",
+      "difficulty": "Advanced",
+      "keyIdeas": [
+        "Fianchetto Bg7 to target White's center from the flanks — the hypermodern philosophy in action",
+        "Allow White to build e4+d4 center, then undermine it with ...c5 or ...e5 at the right time",
+        "The Austrian Attack (4.f4) is White's most aggressive reply — Black must play actively with ...c5 or ...Nc6",
+        "In the Classical System (4.Nf3 Bg7 5.Be2 O-O 6.O-O), Black gets a safe setup before counterattacking",
+        "Black's key breaks: ...c5 (challenges d4), ...e5 (closes the center), or a queenside flank attack",
+        "The '150 Attack' (Be3 + Qd2 + O-O-O + Bh6) is White's direct attacking system — Black must play ...c5 quickly",
+        "Bg7 is Black's most important piece — protect it and use it to dominate the a8-h1 diagonal",
+        "Related to the Modern Defense (1...g6) — the Pirc commits the Nf6 and d6 pawn earlier"
+      ],
+      "popularity": 48
+    },
+    {
+      "id": "scotch-game",
+      "name": "Scotch Game",
+      "eco": "C44",
+      "description": "The Scotch Game begins with 1.e4 e5 2.Nf3 Nc6 3.d4 — White immediately challenges the center with d4, avoiding the slow maneuvering of the Ruy López. After 3...exd4 4.Nxd4, White has recaptured with a piece and obtained a strong pawn center. The Scotch was revived at the elite level by Garry Kasparov in 1990 when he used it to defeat Anatoly Karpov in a World Championship match — a result that shocked the chess world. Today it is one of the most popular alternatives to the Italian and Ruy López, offering sharp, concrete play with many tactical opportunities.",
+      "moves": [
+        "e4",
+        "e5",
+        "Nf3",
+        "Nc6",
+        "d4",
+        "exd4",
+        "Nxd4"
+      ],
+      "category": "King's Pawn Opening",
+      "difficulty": "Intermediate",
+      "keyIdeas": [
+        "Push d4 early to open the center and fight for initiative before Black can consolidate",
+        "After 4.Nxd4, White's knight is well-placed in the center — Black must challenge it immediately",
+        "4...Bc5 (the Classical Scotch) leads to sharp play — White can try 5.Nxc6 or 5.Be3",
+        "4...Nf6 (the Mieses Variation) is a popular active response — White plays 5.Nxc6 bxc6 6.e5",
+        "The Scotch Gambit (4.Bc4 instead of 4.Nxd4) is an aggressive alternative — White keeps the initiative",
+        "Kasparov's key discovery: White's Nd4-f5 jump or Nd4-b5-d6 maneuvers can be devastating",
+        "White often plays Be3 to challenge the Bc5 and prepare queenside castling for a kingside attack"
+      ],
+      "popularity": 68
+    },
+    {
+      "id": "kings-indian-attack",
+      "name": "King's Indian Attack",
+      "eco": "A07",
+      "description": "The King's Indian Attack (KIA) is White's most flexible setup — a reversed King's Indian Defense where White builds a solid structure with Nf3, g3, Bg2, d3, Nbd2, and O-O. It can be used against virtually any Black response and leads to rich strategic battles. Bobby Fischer was a famous practitioner of the KIA, winning many brilliant games with it. The KIA is particularly effective against the French Defense (...e6 + ...d5) and the Sicilian (...c5). Its main appeal is that White follows a systematic plan without needing to memorize massive amounts of theory.",
+      "moves": [
+        "e4",
+        "e6",
+        "d3",
+        "d5",
+        "Nd2",
+        "Nf6",
+        "Ngf3",
+        "c5",
+        "g3",
+        "Nc6",
+        "Bg2",
+        "Be7",
+        "O-O"
+      ],
+      "category": "King's Pawn Opening",
+      "difficulty": "Intermediate",
+      "keyIdeas": [
+        "Build the setup Nf3, g3, Bg2, d3, Nbd2, O-O — flexible and effective against many Black setups",
+        "The Bg2 bishop on the long diagonal is a powerful long-term weapon — pressure down to a8",
+        "After O-O, prepare the e4-e5 push to gain space and launch the kingside attack",
+        "Fischer's plan: h4-h5 pawn storm with Ng5 to create weaknesses around the Black king",
+        "Against the Sicilian: play with Bg2, d3, Nf3, Nbd2 — very flexible, avoid massive theory",
+        "The KIA avoids all of Black's main defenses (French, Caro-Kann, Sicilian) with the same solid setup",
+        "After e5, the knight on f3 supports the advance and the Bg2 controls key squares"
+      ],
+      "popularity": 55
+    },
+    {
+      "id": "nimzo-larsen-attack",
+      "name": "Nimzo-Larsen Attack",
+      "eco": "A01",
+      "description": "The Nimzo-Larsen Attack begins with 1.b3 — an immediate fianchetto of the queen's bishop, placing it on b2 to control the long diagonal and put pressure on e5. This opening was popularized by two legendary players: Aron Nimzowitsch and Bent Larsen. It is a hypermodern opening that avoids all standard theory, often catching opponents completely off guard. Larsen famously played 1.b3 in high-level games throughout the 1960s and 70s, and modern engines confirm it is a perfectly reasonable opening. It leads to rich, unbalanced positions where creativity is rewarded over memory.",
+      "moves": [
+        "b3",
+        "e5",
+        "Bb2"
+      ],
+      "category": "Flank Opening",
+      "difficulty": "Intermediate",
+      "keyIdeas": [
+        "Fianchetto the queen's bishop immediately to b2 — control the long diagonal and pressure e5",
+        "Follow up with Nf3, g3, Bg2 for a double fianchetto setup — a hypermodern fortress",
+        "White avoids all standard theory — opponents must think from move 1",
+        "The Bb2 bishop is a long-term powerhouse — it controls the center from the flank",
+        "After e4, the double fianchetto creates tremendous pressure on both diagonals",
+        "Larsen's idea: use the b2-bishop to indirectly fight for the center while developing naturally",
+        "Good for players who prefer strategic battles over memorized theory — creativity is the weapon"
+      ],
+      "popularity": 35
     },
     {
       "id": "bishops-opening",

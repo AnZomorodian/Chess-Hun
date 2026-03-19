@@ -21,6 +21,7 @@ interface Lesson {
   content: string;
   exercises: Exercise[];
   order: number;
+  minElo?: number;
 }
 
 const LESSONS: Lesson[] = [
@@ -2322,6 +2323,533 @@ Some sacrifices are based on intangible factors:
         options: ["How many points of material am I giving up?", "Will my active pieces and positional advantages outweigh the lost material in the long run?", "Will my opponent be surprised?", "Is there an immediate tactical refutation?"],
         answer: "Will my active pieces and positional advantages outweigh the lost material in the long run?",
         explanation: "Material is just a number — what matters is whether your compensation is REAL and LASTING. Concrete compensation: a dominant piece that can never be dislodged, a permanent structural weakness, or a passed pawn. If the positional factors are strong enough, material is irrelevant.",
+      },
+    ],
+  },
+  {
+    id: "grandmaster-thinking",
+    title: "How Grandmasters Think",
+    description: "Unlock the elite mindset: candidate moves, evaluation, and decision-making at the highest level.",
+    category: "Mastery",
+    difficulty: "Advanced",
+    duration: 35,
+    order: 26,
+    minElo: 2000,
+    content: `# How Grandmasters Think
+
+This lesson reveals the systematic thinking process used by elite players — a structured method that separates grandmasters from everyone else.
+
+## The Candidate Moves Method
+
+Developed by Grandmaster Alexander Kotov and explained in his famous book *Think Like a Grandmaster*, this method teaches systematic calculation.
+
+### Step 1: Identify Candidate Moves
+
+Before calculating, list ALL forcing or promising moves:
+- **Checks** — any check available?
+- **Captures** — any captures available?
+- **Threats** — moves that create threats the opponent must answer?
+- **Improvements** — moves that improve your worst-placed piece?
+
+> "When you see a good move, look for a better one." — Emanuel Lasker
+
+### Step 2: Calculate Each Candidate
+
+For each candidate move, calculate the forcing lines deeply:
+- Analyze each move in your **tree of variations**
+- Don't jump between branches — finish each line completely
+- The "blunder of the second glance" happens when you calculate A, peek at B, then misremember A
+
+### Step 3: Evaluate the Resulting Positions
+
+After calculating, **evaluate** what you've reached:
+- Material balance: who has more?
+- King safety: whose king is safer?
+- Activity: whose pieces are more active?
+- Pawn structure: who has the better long-term structure?
+- Initiative: who is attacking, who is defending?
+
+## Pattern Recognition
+
+Grandmasters don't calculate everything from scratch. They recognize **patterns** from thousands of studied games:
+- "This looks like a back rank mate setup"
+- "This pawn structure reminds me of a Carlsbad — I know the plans"
+- Pattern recognition lets GMs instantly understand positions that take club players hours
+
+## Time Management
+
+Grandmasters allocate time based on **position complexity**:
+- Simple positions: 30 seconds
+- Complex middlegame decisions: 5-20 minutes
+- Critical junctures: Up to 30+ minutes
+- Never spend long thinking on "obvious" recaptures
+
+## Prophylaxis — Petrosian's Secret
+
+Before deciding on your own plan, always ask: "What does my opponent want to do? How do I stop it?"
+
+This concept — **prophylaxis** — was mastered by Tigran Petrosian (World Champion 1963–69). He would prevent his opponent's ideas before they were even formed.
+
+## The Inner Monologue of a Grandmaster
+
+A typical grandmaster's thought process:
+1. "What just changed? What is my opponent threatening?"
+2. "What are MY candidate moves?"
+3. "Calculate the sharpest line first"
+4. "What does the resulting position look like? Is it better for me?"
+5. "Is there a prophylactic move I should consider?"
+6. "Make the decision — no second-guessing!"`,
+    exercises: [
+      {
+        id: "gmt-1",
+        type: "multiple-choice",
+        question: "According to the Candidate Moves Method, what should you do BEFORE calculating any variations?",
+        options: ["Start calculating your favorite move immediately", "List ALL candidate moves (checks, captures, threats) before calculating any single one", "Ask your opponent for advice", "Look for the most beautiful move"],
+        answer: "List ALL candidate moves (checks, captures, threats) before calculating any single one",
+        explanation: "Kotov's key insight: identify all candidate moves FIRST, then calculate each one completely. The 'blunder of the second glance' happens when players jump between lines mid-calculation — they misremember what they already calculated and make errors.",
+      },
+      {
+        id: "gmt-2",
+        type: "multiple-choice",
+        question: "What is 'prophylaxis' in chess?",
+        options: ["Attacking the opponent's king", "Preventing your opponent's plans before they are carried out", "Sacrificing material for the initiative", "Always castling early"],
+        answer: "Preventing your opponent's plans before they are carried out",
+        explanation: "Prophylaxis is thinking about what your OPPONENT wants to do and stopping it proactively. Petrosian was the master — he'd make quiet moves that prevented enemy plans your opponent hadn't even conceived yet. Ask: 'What does my opponent want to do next turn?'",
+      },
+      {
+        id: "gmt-3",
+        type: "multiple-choice",
+        question: "How do grandmasters use pattern recognition?",
+        options: ["They memorize every possible position", "They recognize familiar position types, plans, and tactical patterns from studied games — instantly understanding structure and plans", "They use computers during the game", "They only rely on calculation, never patterns"],
+        answer: "They recognize familiar position types, plans, and tactical patterns from studied games — instantly understanding structure and plans",
+        explanation: "Pattern recognition is the engine of GM thinking. When a GM sees a Carlsbad pawn structure, they instantly know the minority attack, where to place the knights, and the typical plan. This comes from studying thousands of master games — the patterns become instinctive.",
+      },
+    ],
+  },
+  {
+    id: "deep-endgame-theory",
+    title: "Deep Endgame Theory",
+    description: "Master the Lucena, Philidor, Rook & Pawn and Bishop endgames that decide grandmaster games.",
+    category: "Endgame",
+    difficulty: "Advanced",
+    duration: 40,
+    order: 27,
+    minElo: 2000,
+    content: `# Deep Endgame Theory
+
+The endgame is where technical precision separates grandmasters from mere mortals. These are the positions every 2000+ player must know by heart.
+
+## Rook Endgames — The Most Important Endgame
+
+Rook endgames occur in ~50% of all games. Mastering them is mandatory.
+
+### The Lucena Position — How to WIN
+
+The Lucena Position is the fundamental winning position in rook endgames with a pawn on the 7th rank.
+
+**Setup**: Your king is on e8, rook on e1, pawn on e7. Enemy king is cut off on the g or h file.
+
+**The "Bridge Building" Technique**:
+1. Bring your rook to e4 (or d4)
+2. Push king to d7 to shelter from checks
+3. Use your rook to block enemy rook checks by "building a bridge"
+4. The pawn promotes
+
+This technique appears in hundreds of grandmaster games every year.
+
+### The Philidor Position — How to DRAW
+
+The Philidor Position is the key defensive technique against a rook and pawn.
+
+**Setup**: Defending with rook, enemy has rook + pawn.
+
+**Philidor's Method**:
+1. Keep your rook on the 6th rank (cutting off the enemy king!)
+2. Only when the pawn advances past the 6th rank, switch to checking from behind
+3. The checks never stop — the enemy king cannot shelter from them
+
+### The Settin Position and "Active Rook" Principle
+
+The defending rook should NEVER be passive. A rook passively defending a pawn is often losing. An active rook giving perpetual checks draws even with a pawn on the 7th.
+
+## King and Pawn Endgames — Precision Required
+
+### Corresponding Squares (Trebuchet)
+
+In some positions, if it is YOUR turn to move, you LOSE. If it is your opponent's turn, THEY lose. These are called Zugzwang positions.
+
+**The Trebuchet** is the most famous example: two pawns facing each other, kings facing each other. Whoever must move loses the pawn and eventually the game.
+
+### The Pawn Triangle
+
+To gain the opposition in king and pawn endgames, sometimes you must "triangulate" — use 3 moves to achieve what could not be done in 2. This loses a tempo deliberately.
+
+## Bishop Endgames
+
+### Same-Color Bishops
+
+The side with more pawns usually wins, but the defending side can often draw by:
+- Creating a fortress (pawn chain the bishop cannot breach)
+- Trading pawns to reach a drawn bishop ending
+
+### Opposite-Color Bishops
+
+The most likely drawn endgame in chess. Even 2 extra pawns may not be enough to win! The attacker's bishop cannot attack squares that the defender's bishop controls.
+
+**Exception**: When the pawns are on both wings, the superior side can often win by creating two threats the defender cannot handle simultaneously.
+
+## Knight vs Bishop Endgames
+
+**Knights excel when**: Pawns are fixed, position is closed, pawns on both wings are absent.
+
+**Bishops excel when**: Pawns are mobile, position is open, you need to control both sides of the board.
+
+The legendary "Good Knight vs Bad Bishop" ending is when your knight is on a beautiful outpost and your opponent's bishop is blocked by its own pawns.
+
+## Key Principle: The Outside Passed Pawn
+
+In any endgame, an **outside passed pawn** is a major weapon. It draws the enemy king away from the main battle, allowing you to capture central pawns and promote.
+
+"A pawn in the center... wins only if it can be used as a decoy." — Dvoretsky`,
+    exercises: [
+      {
+        id: "det-1",
+        type: "multiple-choice",
+        question: "In the Philidor Position, where should the defending rook be placed when the enemy pawn is still behind the 6th rank?",
+        options: ["Behind the pawn", "In front of the pawn", "On the 6th rank, cutting off the enemy king", "On the side of the board"],
+        answer: "On the 6th rank, cutting off the enemy king",
+        explanation: "In the Philidor Position, the defending rook sits on the 6th rank to cut off the enemy king. Only when the pawn advances past the 6th rank does the defending rook switch to checking from behind. This is the key defensive technique!",
+      },
+      {
+        id: "det-2",
+        type: "multiple-choice",
+        question: "Why are opposite-color bishop endgames so often drawn?",
+        options: ["Both bishops cancel out completely", "The attacker's bishop cannot attack the squares the defender's bishop controls — the defender creates an impenetrable fortress", "Both players cannot promote pawns", "The kings always reach a stalemate"],
+        answer: "The attacker's bishop cannot attack the squares the defender's bishop controls — the defender creates an impenetrable fortress",
+        explanation: "In opposite-color bishop endgames, the bishops operate on completely different colored squares. The defending bishop can control key squares the attacker's bishop cannot touch, making it possible to build an impenetrable fortress. Even 2-3 extra pawns may not be enough to win!",
+      },
+      {
+        id: "det-3",
+        type: "multiple-choice",
+        question: "What is 'triangulation' in king and pawn endgames?",
+        options: ["Moving the king in a triangle to lose a tempo and transfer the opposition to the opponent", "A three-pawn sacrifice to open the position", "Moving the rook in a triangular pattern", "A checkmate pattern involving three pieces"],
+        answer: "Moving the king in a triangle to lose a tempo and transfer the opposition to the opponent",
+        explanation: "Triangulation uses 3 king moves to achieve what 2 moves cannot — it deliberately wastes a tempo to transfer the 'must move' obligation to the opponent. If the opponent is in Zugzwang (must move and lose), triangulation forces them into that position when it's their turn.",
+      },
+    ],
+  },
+  {
+    id: "advanced-attack-theory",
+    title: "Advanced Attack Theory",
+    description: "Learn how World Champions launch devastating kingside attacks — the principles behind the immortal attacking games.",
+    category: "Mastery",
+    difficulty: "Advanced",
+    duration: 38,
+    order: 28,
+    minElo: 2000,
+    content: `# Advanced Attack Theory
+
+The greatest players in history — Tal, Kasparov, Morphy, Fischer — won games with attacks so ferocious they seemed to defy logic. This lesson reveals the principles behind those attacks.
+
+## When to Attack — The Prerequisites
+
+A kingside attack is only justified when these conditions are met:
+
+### 1. Your King is Safe
+You cannot attack if your own king is in danger. Secure your king BEFORE launching an attack.
+
+### 2. You Have More Active Pieces
+An attack with undeveloped pieces fails. Count your active pieces vs. your opponent's — you need more troops aimed at the target.
+
+### 3. The King is Vulnerable
+The enemy king must have a weakness:
+- Opened pawn shield (after ...g6 with h4-h5-h6 advance)
+- Piece coordination defending it is disrupted
+- The king is uncastled in the center during an open game
+
+### 4. You Have a Lead in Piece Activity
+Mikhail Botvinnik called it "the initiative" — the attacking side dictates the game's flow.
+
+## Types of Attacks
+
+### The Piece Attack
+Attacking with minor pieces and queen — no pawn advances needed. Classic examples:
+- Morphy's sacrificial attacks (clearing diagonals for bishops)
+- Fischer's devastating queen + bishop batteries
+
+### The Pawn Storm
+Advancing pawns at the enemy king, regardless of whether you've castled the same side.
+- **f4-f5-f6**: The most common pawn storm
+- **h4-h5-h6**: Forces open the h-file after hxg6 or g6xh6
+- **g4-g5-g6**: Steinitz's favored pawn roller
+
+### The Exchange Sacrifice Attack (Tal's Method)
+Give a rook for a bishop/knight to:
+- Destroy the pawn shield around the enemy king
+- Activate all your other pieces toward the king
+- Create a permanent attack that never loses energy
+
+Mikhail Tal won over 100 games with this exact method.
+
+## Key Attacking Principles
+
+### Open Files and Diagonals
+Attacks succeed when lines are OPEN. Before attacking, ask: "Which file or diagonal can I open?"
+
+### The Battery
+A queen + rook on the same file (battery) creates devastating pressure. A queen + bishop on a long diagonal is equally dangerous.
+
+### The Sacrifice as the Key
+Most brilliant attacks require a sacrifice. The logic:
+1. The position demands it — material is less important than piece activity
+2. The king can be attacked — opening lines is worth more than a rook
+3. Compensation is permanent — once the position opens, your attack never stops
+
+### Zugzwang in the Middlegame
+Rare but devastating — sometimes you can maneuver so that ANY move your opponent makes weakens their king. This is the highest art of positional attacking play.
+
+## The "Rule of Two Weaknesses"
+
+Even in attack, remember Nimzowitsch's principle: create a SECOND weakness to drain the defender's resources.
+
+If all your energy focuses on the king, the defender uses all their pieces there. Create a SECOND threat elsewhere — the defender cannot handle two problems simultaneously.
+
+## The Psychology of Attack
+
+Kasparov understood that chess has a psychological dimension:
+- Tactical complications favor the better-prepared player
+- Creating time pressure with fast, forcing moves destabilizes the opponent
+- A bluff sacrifice — one that is actually unsound — can work at the board because the opponent cannot calculate perfectly under pressure
+
+> "The highest art in chess is to attack and defend at the same time." — Savielly Tartakower`,
+    exercises: [
+      {
+        id: "aat-1",
+        type: "multiple-choice",
+        question: "Before launching a kingside attack, what is the MOST important prerequisite?",
+        options: ["Having more pawns on the kingside", "Your king must be safe and you must have more active pieces aimed at the target", "Your opponent must be low on time", "Having the bishop pair"],
+        answer: "Your king must be safe and you must have more active pieces aimed at the target",
+        explanation: "Never attack when your own king is insecure! The first rule of attacking chess is to secure your own king. Then ensure you have more active pieces (not just more pieces — they must be AIMED at the target). An attack with undeveloped pieces always fails.",
+      },
+      {
+        id: "aat-2",
+        type: "multiple-choice",
+        question: "What is the 'Rule of Two Weaknesses' in attacking chess?",
+        options: ["Always create two pawns weaknesses in the opening", "Force the defender to deal with TWO threats simultaneously — the king attack AND another weakness elsewhere", "Attack only the two weakest pawns", "Weaken both the kingside and queenside before castling"],
+        answer: "Force the defender to deal with TWO threats simultaneously — the king attack AND another weakness elsewhere",
+        explanation: "If you attack ONLY the king, the defender puts all their pieces there and holds. Create a SECOND weakness — a passed pawn, a queenside threat, a weak backward pawn — and the defender cannot handle both. This is why even the greatest defenders eventually crack.",
+      },
+      {
+        id: "aat-3",
+        type: "multiple-choice",
+        question: "Why did Mikhail Tal frequently sacrifice rooks for minor pieces?",
+        options: ["He made calculation errors", "Rooks are less valuable than bishops", "To permanently destroy the enemy pawn shield and create an unstoppable attack with all his remaining pieces", "To reach a drawn rook endgame"],
+        answer: "To permanently destroy the enemy pawn shield and create an unstoppable attack with all his remaining pieces",
+        explanation: "Tal's exchange sacrifices were brilliantly calculated. By giving a rook for a bishop or knight, he destroyed the pawn cover around the enemy king AND activated his remaining pieces simultaneously. The resulting attacks were so overwhelming that material was irrelevant — the king fell before any compensation could be collected.",
+      },
+    ],
+  },
+  {
+    id: "computer-era-openings",
+    title: "Opening Preparation in the Computer Era",
+    description: "How top players use engines, databases, and novelties to prepare deadly opening weapons.",
+    category: "Openings",
+    difficulty: "Advanced",
+    duration: 30,
+    order: 29,
+    minElo: 2000,
+    content: `# Opening Preparation in the Computer Era
+
+The chess world changed forever when engines became stronger than humans. How do top players use technology to prepare devastating opening weapons?
+
+## The Engine Revolution
+
+Before computers, opening preparation meant memorizing published analysis and improvising. Today, it means:
+- Running engines (Stockfish, Leela Chess Zero) 24/7 on key positions
+- Using databases of millions of games to find statistical tendencies
+- Creating **novelties** — new moves in well-known positions that catch opponents off guard
+
+## What is a Novelty (TN — Theoretical Novelty)?
+
+A novelty is a new move in an opening position that has been played before. The art of preparation lies in:
+1. Finding a position where the previous move order was standard
+2. Discovering a move that engines evaluate as better — or at least equal
+3. **Surprising the opponent** at the board, where they must spend time and energy figuring out your idea
+
+World Championship matches are often decided by novelties prepared weeks in advance.
+
+## Databases — Mining for Weapons
+
+Professional players use databases (ChessBase, Lichess database, chess.com Explorer) to:
+- Find **fresh positions** their opponents haven't faced
+- Identify what variation an opponent plays most
+- Find positions where the opponent's statistics are poor (bad score, many losses)
+- Discover move orders that avoid the opponent's pet lines
+
+**Example**: Magnus Carlsen notices that his opponent always plays the Ruy Lopez, but loses 70% of games against the Marshall Attack. He prepares the Marshall Attack deeply and uses it in a critical game.
+
+## Avoiding Theory — The "Anti" Systems
+
+Some elite players deliberately AVOID sharp theoretical lines:
+- **Magnus Carlsen** often plays quiet, untheoretical moves to take opponents out of preparation
+- The London System, Catalan, and Réti Opening are popular at the top level precisely because they avoid massive Sicilian/Najdorf/King's Indian theory
+- The goal: reach complex middlegames where understanding beats memory
+
+## Deep Preparation — Kasparov's Method
+
+Garry Kasparov was famous for his encyclopedic opening preparation:
+1. **Identify the opponent's mainline** — what do they play? What theory do they know?
+2. **Find a branch point** — where can you deviate?
+3. **Prepare the deviation deeply** — calculate 20-30 moves if necessary
+4. **Have a "second line"** — if the opponent avoids your main preparation, you have another weapon ready
+
+His preparation team would analyze for months before major tournaments.
+
+## Leela Chess Zero — A Different Kind of Preparation
+
+Modern players also use Leela (a neural network engine that plays more like a human):
+- Leela finds "human-like" plans that Stockfish misses
+- It's particularly good at evaluating long-term positional compensation
+- Many of today's creative attacking novelties were first found by Leela
+
+## How to Improve YOUR Opening Preparation
+
+Even at club level, systematic preparation helps:
+1. **Choose openings that match your style** — if you like attacking, don't play Berlin
+2. **Build a repertoire** — a connected set of openings you understand deeply
+3. **Study the middlegames arising from your openings** — understanding the plans is more important than memorizing moves
+4. **Review your own games** — where did you leave preparation? What was the critical moment?
+5. **Study your opponents** (in tournaments) — what do they play? Prepare accordingly`,
+    exercises: [
+      {
+        id: "ceo-1",
+        type: "multiple-choice",
+        question: "What is a 'Theoretical Novelty' (TN) in chess opening preparation?",
+        options: ["A completely new opening that nobody has ever played", "A new move in a previously analyzed position that improves on existing theory or surprises the opponent", "A new book about opening theory", "Playing the first move no one expects"],
+        answer: "A new move in a previously analyzed position that improves on existing theory or surprises the opponent",
+        explanation: "A novelty (or TN — Theoretical Novelty) is a new move played in a position where previous games had continued differently. The goal is to improve on existing theory OR surprise the opponent at the board. World Championship matches are often decided by deeply prepared novelties.",
+      },
+      {
+        id: "ceo-2",
+        type: "multiple-choice",
+        question: "Why do some elite players like Magnus Carlsen often choose 'quiet' or untheoretical openings?",
+        options: ["They don't know the sharp theory", "To avoid prepared opponents — playing positions where understanding beats memorized preparation", "Quiet openings are always better", "To confuse the engine evaluations"],
+        answer: "To avoid prepared opponents — playing positions where understanding beats memorized preparation",
+        explanation: "Carlsen often plays London System, Catalan, or quiet deviations to AVOID his opponents' deep preparation. In untheoretical positions, deep understanding and creativity matter more than memorized 30-move lines. This is why he's so dominant — he wins in positions everyone has to think from scratch.",
+      },
+      {
+        id: "ceo-3",
+        type: "multiple-choice",
+        question: "What is the most important long-term strategy for improving your opening preparation at club level?",
+        options: ["Memorize 30 moves deep in every variation", "Choose openings matching your style, understand the resulting middlegames and plans deeply, and review your own games", "Copy what Magnus Carlsen plays exactly", "Only play the most theoretical openings"],
+        answer: "Choose openings matching your style, understand the resulting middlegames and plans deeply, and review your own games",
+        explanation: "Memorizing moves without understanding leads to disasters when opponents deviate. The key is: choose openings you ENJOY and that match your style, then deeply understand the plans that arise. Study master games in YOUR openings, not random games. Review your own games to see where understanding failed.",
+      },
+    ],
+  },
+  {
+    id: "world-champion-techniques",
+    title: "World Champion Techniques",
+    description: "Study the unique methods and styles of chess history's greatest champions — from Morphy to Carlsen.",
+    category: "Mastery",
+    difficulty: "Advanced",
+    duration: 45,
+    order: 30,
+    minElo: 2000,
+    content: `# World Champion Techniques
+
+Every World Champion brought something unique to chess — a method, a style, a technique that became legendary. Study their secrets to elevate your own game.
+
+## Paul Morphy (Champion ~1858) — The Father of Modern Chess
+
+Morphy lived a century before his time. His principles:
+- **Rapid development above all** — every move must develop a piece or serve the position
+- **Open files are power** — control open files with rooks
+- **Attack the uncastled king with maximum force**
+
+His games are a masterclass in what we now call "basic opening principles." Against opponents who moved the same piece twice and brought out the queen early, Morphy's discipline was devastating.
+
+**Technique to study**: *Morphy vs. Duke of Brunswick and Count Isouard, 1858* — the Opera Game. 17 moves, 7 pieces sacrificed, and a back rank mate. Perfect opening principles in action.
+
+## Emanuel Lasker (Champion 1894–1921) — The Psychologist
+
+Lasker held the World Championship for 27 years — still the longest reign in history. His secret:
+- **Psychological understanding** — he played moves his opponents would find DIFFICULT, not necessarily the best computer moves
+- **Practical fighting chess** — he avoided early draws and always sought complications
+- **Endgame mastery** — famous for winning "dead drawn" endgames through superior technique
+
+> "In chess, as in life, a man is his own most dangerous opponent." — Lasker
+
+## José Raúl Capablanca (Champion 1921–1927) — The Machine
+
+Capablanca played chess like a machine — effortless, precise, seemingly reading 20 moves ahead:
+- **Simplification mastery** — he would trade pieces to reach technically won endgames that humans struggle to convert
+- **Positional intuition** — he rarely needed to calculate long variations; his positional judgment was unmatched
+- **Flawless technique** — his rook endgame technique is still studied as the gold standard
+
+**Technique to study**: The "Capablanca Rule" — when ahead in material, trade pieces but NOT pawns. More pieces = more chances for opponent to complicate; more pawns = more winning chances for you.
+
+## Mikhail Tal (Champion 1960–1961) — The Magician from Riga
+
+Tal's attacking genius was so wild and complex that even engines sometimes can't find his ideas:
+- **Sacrificial genius** — he offered material constantly, trusting in the attack
+- **Psychological pressure** — his wild complications would paralyze opponents
+- **Intuitive calculation** — he calculated variations no human could fully verify
+
+> "You must take your opponent into a deep dark forest where 2+2=5, and the path leading out is only wide enough for one." — Tal
+
+## Anatoly Karpov (Champion 1975–1985) — The Constrictor
+
+Karpov squeezed positions with a python-like grip:
+- **Prophylaxis** — always stopping the opponent's plans before they materialized  
+- **Piece quality over quantity** — one perfectly placed piece worth more than two misplaced
+- **Positional strangulation** — restricting the opponent until they had no good moves (Zugzwang in the middlegame)
+- **Exploiting small advantages** — he could convert the most microscopic advantages to wins
+
+## Garry Kasparov (Champion 1985–2000) — The Monster
+
+The greatest player of the 20th century combined everything:
+- **Preparation** — his opening preparation was encyclopedic and terrifying
+- **Dynamic play** — he preferred positions with tension and imbalance
+- **Initiative above all** — he would sacrifice material to maintain initiative
+- **Will to win** — his competitive drive was unprecedented
+
+**Technique**: The "Kasparov Bishop" — placing a bishop aggressively (often g5, b5, or c4) to create immediate pressure and prevent castling.
+
+## Magnus Carlsen (Champion 2013–2023) — The All-Rounder
+
+Carlsen is the highest-rated player in history (peak 2882). His secrets:
+- **Endgame mastery beyond anyone else** — he wins positions that engines call drawn
+- **Avoiding preparation** — he plays complex but untheoretical positions to neutralize opponent prep
+- **Never satisfied with a draw** — he plays for the win in any position
+- **Fitness and focus** — he maintains peak physical condition for 5-hour games
+- **Pattern recognition at the deepest level** — he sees connections between positions that nobody else notices
+
+> "I am trying to beat my opponent rather than trying to be perfect." — Carlsen`,
+    exercises: [
+      {
+        id: "wct-1",
+        type: "multiple-choice",
+        question: "What was Capablanca's famous rule about trading when ahead in material?",
+        options: ["Always trade everything as fast as possible", "Trade pieces but NOT pawns — fewer pieces = fewer complications for opponent; more pawns = more winning chances", "Never trade the queen when ahead", "Always keep all pieces on the board to create confusion"],
+        answer: "Trade pieces but NOT pawns — fewer pieces = fewer complications for opponent; more pawns = more winning chances",
+        explanation: "The 'Capablanca Rule': when ahead in material, exchange PIECES (to reduce the opponent's counterplay chances), but keep PAWNS (because pawns create winning chances — they can advance and promote). More pieces on the board = more chances for your opponent to create complications. Fewer pieces = your material advantage becomes clearer.",
+      },
+      {
+        id: "wct-2",
+        type: "multiple-choice",
+        question: "What made Emanuel Lasker's approach to chess unique compared to other champions?",
+        options: ["He only played gambits", "He played psychologically — moves his opponents would find DIFFICULT, not necessarily the objective best", "He only played endgames", "He refused to study opening theory"],
+        answer: "He played psychologically — moves his opponents would find DIFFICULT, not necessarily the objective best",
+        explanation: "Lasker deliberately chose moves that created maximum difficulty for his specific opponent. If he knew an opponent disliked complications, he'd complicate. If they were a tactical player, he'd seek strategic positions. This psychological understanding helped him hold the World Championship for 27 years — still the record.",
+      },
+      {
+        id: "wct-3",
+        type: "multiple-choice",
+        question: "What is the key to Magnus Carlsen's legendary endgame dominance?",
+        options: ["He memorizes all endgame databases", "He resigns in drawn endgames", "His pattern recognition at the deepest level — he sees connections and winning chances in positions others evaluate as drawn", "He only reaches endgames when far ahead in material"],
+        answer: "His pattern recognition at the deepest level — he sees connections and winning chances in positions others evaluate as drawn",
+        explanation: "Carlsen wins positions engines and grandmasters call drawn because his pattern recognition is unparalleled. He sees that 'this structure resembles a position I've studied where the winning technique was X.' He also has the psychological stamina to play for 7-8 hours, slowly improving his position by tiny increments until the opponent cracks.",
       },
     ],
   },

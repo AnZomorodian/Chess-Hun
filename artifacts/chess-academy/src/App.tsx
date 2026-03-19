@@ -111,11 +111,6 @@ function Router() {
                 Designed & developed by
               </p>
               <p className="text-sm font-semibold text-primary mt-1">Artin Zomorodian</p>
-              <a href="https://t.me/ArtinZomorodian" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-[#229ED9] hover:underline mt-2">
-                <TelegramIcon className="w-3 h-3" />
-                @ArtinZomorodian
-              </a>
             </div>
           </div>
           <div className="border-t border-border/40 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
